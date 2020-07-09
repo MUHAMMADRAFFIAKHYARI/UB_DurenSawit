@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/masuk_ke_akun_anda"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="30sp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="100dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGrey"
+            android:hint="@string/email"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="50dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/kata_sandi"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:layout_width="@dimen/button_primary_width"
+            android:layout_height="@dimen/button_primary_height"
+            android:background="@drawable/btn_rounded_primary"
+            android:textColor="@color/colorWhite"
+            android:text="Login"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="50dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="220dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Punya Akun ?"
+                android:fontFamily="@font/poppins"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar"
+                android:textColor="@color/colorAccent"
+                android:fontFamily="@font/poppins_medium"
+                android:onClick="daftarText"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

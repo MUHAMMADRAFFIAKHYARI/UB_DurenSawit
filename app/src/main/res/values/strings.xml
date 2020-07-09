@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">UB_DurenSawit</string>
+    <string name="app_name">UB Sumber Barokah</string>
+    <string name="masuk_ke_akun_anda">Masuk ke "\n"akun anda</string>
+    <string name="email">email</string>
+    <string name="kata_sandi">kata sandi</string>
+    <string name="nama">nama</string>
+    <string name="no_telephone_hp">no telephone/hp</string>
 </resources>
