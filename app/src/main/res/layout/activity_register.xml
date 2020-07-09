@@ -75,7 +75,8 @@
             android:fontFamily="@font/poppins"
             android:text="Daftar"
             android:textAllCaps="false"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

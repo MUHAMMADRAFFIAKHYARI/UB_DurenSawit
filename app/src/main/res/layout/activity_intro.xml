@@ -48,41 +48,41 @@
             android:id="@+id/register_button"
             android:layout_width="@dimen/button_primary_width"
             android:layout_height="@dimen/button_primary_height"
-            android:text="Buat Akun"
-            android:background="@drawable/btn_rounded_primary"
-            android:textColor="@color/colorWhite"
             android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
             android:layout_marginBottom="20dp"
-            android:textSize="14sp"
-            android:textAllCaps="false"/>
+            android:background="@drawable/btn_rounded_primary"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Buat Akun"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/login_button"
-            android:paddingLeft="75dp"
-            android:paddingRight="75dp"
             android:layout_width="@dimen/button_secondary_width"
             android:layout_height="@dimen/button_secondary_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_rounded_secondary"
             android:drawableLeft="@drawable/ic_icons8_google"
             android:fontFamily="@font/poppins_medium"
-            android:text="Login Akun Google"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_rounded_secondary"
-            android:layout_marginBottom="20dp"
-            android:textSize="14sp"
+            android:paddingLeft="65dp"
+            android:paddingRight="65dp"
+            android:text="Daftar Akun Google"
             android:textAllCaps="false"
-            />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/login_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_medium"
             android:onClick="LoginText"
             android:text="Login"
             android:textColor="@color/colorAccent"
-            android:textSize="14sp"
-            app:fontFamily="@font/poppins_bold" />
+            android:textSize="16sp"
+             />
 
     </LinearLayout>
 
