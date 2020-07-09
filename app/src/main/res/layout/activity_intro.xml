@@ -16,7 +16,8 @@
             android:id="@+id/vpager"
             android:layout_width="match_parent"
             android:layout_height="470sp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="50dp">
 
         </androidx.viewpager.widget.ViewPager>
 
@@ -27,7 +28,7 @@
             android:layout_gravity="center"
             app:tabIndicatorHeight="0dp"
             app:tabBackground="@drawable/indicator_selector_pv"
-            android:layout_marginBottom="45dp">
+            android:layout_marginBottom="30dp">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -57,8 +58,11 @@
             android:textAllCaps="false"/>
         <Button
             android:id="@+id/login_button"
+            android:paddingLeft="75dp"
+            android:paddingRight="75dp"
             android:layout_width="@dimen/button_secondary_width"
             android:layout_height="@dimen/button_secondary_height"
+            android:drawableLeft="@drawable/ic_icons8_google"
             android:fontFamily="@font/poppins_medium"
             android:text="Login Akun Google"
             android:layout_gravity="center"
@@ -73,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:onClick="LoginText"
             android:text="Login"
             android:textColor="@color/colorAccent"
