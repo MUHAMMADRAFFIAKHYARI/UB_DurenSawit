@@ -1,5 +1,6 @@
-package android.example.ub_durensawit;
+package android.example.ub_durensawit.Fragment;
 
+import android.example.ub_durensawit.R;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

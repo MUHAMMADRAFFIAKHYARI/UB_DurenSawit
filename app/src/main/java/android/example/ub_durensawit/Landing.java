@@ -4,6 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.example.ub_durensawit.Fragment.BerandaFragment;
+import android.example.ub_durensawit.Fragment.KategoriFragment;
+import android.example.ub_durensawit.Fragment.PenggunaFragment;
+import android.example.ub_durensawit.Fragment.TransaksiFragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
