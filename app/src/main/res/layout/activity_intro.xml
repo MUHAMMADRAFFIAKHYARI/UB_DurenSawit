@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,83 +7,99 @@
     tools:context=".IntroActivity"
     android:background="@color/colorWhite">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpager"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/tab_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_indicator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintEnd_toEndOf="@+id/register_button"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/register_button"
+        app:tabBackground="@drawable/indicator_selector_pv"
+        app:tabIndicatorHeight="0dp">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vpager"
-            android:layout_width="match_parent"
-            android:layout_height="470sp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="50dp">
-
-        </androidx.viewpager.widget.ViewPager>
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_indicator"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:tabIndicatorHeight="0dp"
-            app:tabBackground="@drawable/indicator_selector_pv"
-            android:layout_marginBottom="30dp">
+            android:layout_height="wrap_content" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="@dimen/button_primary_width"
-            android:layout_height="@dimen/button_primary_height"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_rounded_primary"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Buat Akun"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="@dimen/button_secondary_width"
-            android:layout_height="@dimen/button_secondary_height"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_rounded_secondary"
-            android:drawableLeft="@drawable/ic_icons8_google"
-            android:fontFamily="@font/poppins_medium"
-            android:paddingLeft="65dp"
-            android:paddingRight="65dp"
-            android:text="Daftar Akun Google"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/login_text"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
-            android:onClick="LoginText"
-            android:text="Login"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-             />
+            android:layout_height="wrap_content" />
 
-    </LinearLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-</RelativeLayout>
+    </com.google.android.material.tabs.TabLayout>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_marginRight="@dimen/padding_screen"
+        android:layout_marginLeft="@dimen/padding_screen"
+        android:layout_height="@dimen/button_primary_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_rounded_primary"
+        android:fontFamily="@font/poppins_light"
+        android:text="Buat Akun"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="@+id/login_button"
+        app:layout_constraintStart_toStartOf="@+id/login_button" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_marginLeft="@dimen/padding_screen"
+        android:layout_marginRight="@dimen/padding_screen"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_secondary_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_rounded_secondary"
+        android:drawableLeft="@drawable/ic_icons8_google"
+        android:fontFamily="@font/poppins_light"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:text="Daftar Akun Google"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/login_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:onClick="LoginText"
+        android:text="Login"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

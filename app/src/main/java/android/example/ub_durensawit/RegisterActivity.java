@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,12 +52,10 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         Init();
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -70,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+
     }
 
 
@@ -104,8 +104,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     @Override
     public void onValidationSucceeded() {
         Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();
-        Intent Login = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(Login);
+        startActivity(new Intent(RegisterActivity.this, Landing.class));
         finish();
     }
 
