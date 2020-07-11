@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        btnRegister = findViewById(R.id.btnRegister);
+            btnRegister = findViewById(R.id.register_button);
 
         //hilangin actionBar
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
