@@ -10,6 +10,23 @@
     android:layout_marginRight="20dp"
     android:layout_marginLeft="20dp">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_secondary_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_rounded_secondary"
+        android:drawableLeft="@drawable/ic_icons8_google"
+        android:fontFamily="@font/poppins"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Daftar dengan Akun Google"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -119,6 +136,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Atau"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/register_button"
+        app:layout_constraintStart_toStartOf="@+id/register_button"
+        app:layout_constraintTop_toBottomOf="@+id/register_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
