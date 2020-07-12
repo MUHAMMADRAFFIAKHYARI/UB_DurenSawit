@@ -1,7 +1,5 @@
 package android.example.ub_durensawit;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.example.ub_durensawit.SMTP.SendMail;
 import android.graphics.Color;
@@ -15,21 +13,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
-import com.mobsandgeeks.saripaar.annotation.Checked;
-import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Length;
-import com.mobsandgeeks.saripaar.annotation.Max;
-import com.mobsandgeeks.saripaar.annotation.Min;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
-import com.mobsandgeeks.saripaar.annotation.Password;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
-import com.mobsandgeeks.saripaar.annotation.Url;
 
 import java.util.List;
-
 import java.util.regex.*;
 
 public class RegisterActivity extends AppCompatActivity implements Validator.ValidationListener {
@@ -91,8 +84,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         });
 
     }
-
-
     private void Validate(){
         validator.validate();
         //nanti disini ada code buat validasi apakah email sudah ada di database

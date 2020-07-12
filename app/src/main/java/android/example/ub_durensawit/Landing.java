@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -65,5 +66,9 @@ public class Landing extends AppCompatActivity {
                 }
             };
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(this, "Klik lagi untuk keluar", Toast.LENGTH_SHORT).show();
+    }
 }
