@@ -3,8 +3,10 @@ package android.example.ub_durensawit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.example.ub_durensawit.SMTP.SendMail;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,6 +35,7 @@ import java.util.regex.*;
 public class RegisterActivity extends AppCompatActivity implements Validator.ValidationListener {
 
     private Button RegisterButton;
+    private Button tesButton;
     @NotEmpty
     @Length(min = 4, max =  30)
     @Pattern(regex =  "^[a-zA-Z]*$")
@@ -82,6 +85,8 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
             public void onClick(View view)
             {
                 Validate();
+
+
             }
         });
 
@@ -97,6 +102,20 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
          } **/
     }
 
+    //Method buat ngirim email
+    private void sendEmail() {
+        //Getting content for email
+        String email = "axelchristiant33@gmail.com";
+        String subject = "Hai";
+        String message = "Tes";
+
+        //Creating SendMail object
+        SendMail sm = new SendMail(this, email, subject, message);
+
+        //Executing sendmail to send email
+        sm.execute();
+    }
+
     @Override
     public void onValidationSucceeded() {
         Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();
@@ -104,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         startActivity(Login);
         finish();
     }
+
 
 
     @Override
