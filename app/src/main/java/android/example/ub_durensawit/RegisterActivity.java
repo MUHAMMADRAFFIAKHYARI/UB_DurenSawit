@@ -9,17 +9,54 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class RegisterActivity extends AppCompatActivity {
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Checked;
+import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
+import com.mobsandgeeks.saripaar.annotation.Email;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.Max;
+import com.mobsandgeeks.saripaar.annotation.Min;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.mobsandgeeks.saripaar.annotation.Password;
+import com.mobsandgeeks.saripaar.annotation.Pattern;
+import com.mobsandgeeks.saripaar.annotation.Url;
 
-    Button btnRegister;
+import java.util.List;
+
+import java.util.regex.*;
+
+public class RegisterActivity extends AppCompatActivity implements Validator.ValidationListener {
+
+    private Button RegisterButton;
+    @NotEmpty
+    @Length(min = 4, max =  30)
+    @Pattern(regex =  "^[a-zA-Z]*$")
+    private EditText InputName;
+    @NotEmpty
+    private EditText InputPhoneNumber;
+    @NotEmpty
+    @Length(min = 6, max =  20)
+    @Pattern(regex =  "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,}$")
+    private EditText InputPassword;
+    @NotEmpty
+    @Email
+    private EditText InputEmail;
+    private Validator validator;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-            btnRegister = findViewById(R.id.register_button);
+        Init();
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
         //hilangin actionBar
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
@@ -31,12 +68,89 @@ public class RegisterActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void Init(){
+        RegisterButton = (Button) findViewById(R.id.register_button);
+        InputName = (EditText) findViewById(R.id.register_name_input);
+        InputEmail = (EditText) findViewById(R.id.register_email_input);
+        InputPassword = (EditText) findViewById(R.id.register_password_input);
+        InputPhoneNumber = (EditText) findViewById(R.id.register_phone_number_input);
+
+        RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, Landing.class));
+            public void onClick(View view)
+            {
+                Validate();
             }
         });
+
+    }
+
+
+    private void Validate(){
+        validator.validate();
+        //nanti disini ada code buat validasi apakah email sudah ada di database
+        /**
+         if (username.equalsIgnoreCase("pmk")) {
+         editTextUsername.setError(getText(R.string.username_already_exists));
+         } **/
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();
+        Intent Login = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(Login);
+        finish();
+    }
+
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+            // Display error messages
+            if (view instanceof EditText) {
+                TextView textView = (TextView) view;
+
+                if(view.getId() == R.id.register_name_input){
+                    String nama = textView.getText().toString();
+                    ((EditText) view).setError(" Nama harus memiliki 4-30 huruf (tidak boleh angka)");
+
+                }
+
+                else if(view.getId() == R.id.register_password_input){
+                    ((EditText) view).setError(" Password minimal memiliki 1 huruf kapital, 1 nomer, " +
+                            "minimal 6 dan maksimal 20 karakter ");
+
+                }
+                else if(view.getId() == R.id.register_phone_number_input){
+                    ((EditText) view).setError(" Nomer telepon tidak boleh kosong ");
+
+                }
+                else if(view.getId() == R.id.register_email_input){
+                    ((EditText) view).setError(" Mohon isi email dengan benar ");
+
+                }
+
+                else{
+                    ((EditText) view).setError(message);
+                }
+
+            }
+
+            else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    //cek Apakah email ada
+    public boolean EmailExist(String email){
+        //Sebentar yaa wkwkwk
+        return true;
     }
 
     public void loginText(View view) {
