@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 
 public class BerandaFragment extends Fragment {
 
-
     private ImageView cartList;
 
     @Nullable

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="170dp"
+        android:layout_height="250dp"
+        app:cardCornerRadius="20dp"
+        app:contentPaddingTop="35dp"
+        app:contentPaddingLeft="10dp"
+        app:contentPaddingRight="10dp"
+        android:paddingBottom="30dp"
+        >
+
+        <ImageView
+            android:id="@+id/itemBarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/indomie" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Mie Goreng Indomie"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp"
+            android:layout_marginTop="100dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="120dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="makanan"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="135dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins"
+            android:text="Rp. 2.300"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_cartunselected"
+            tools:ignore="VectorDrawableCompat"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="170dp"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
