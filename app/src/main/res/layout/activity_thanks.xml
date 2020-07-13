@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="@dimen/padding_screen"
+    android:paddingLeft="@dimen/padding_screen"
     tools:context=".ThanksActivity">
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="@dimen/button_primary_width"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/button_primary_height"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="32dp"

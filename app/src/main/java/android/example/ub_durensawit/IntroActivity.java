@@ -92,9 +92,7 @@ public class IntroActivity extends AppCompatActivity {
                 "kamu butuh",R.drawable.image1));
         mList.add(new ScreenItems("Pilih apa kesuakaanmu","Pilih barang apa saja yang\n" +
                 "kamu suka",R.drawable.image2));
-        mList.add(new ScreenItems("Dapatkan yang kamu pilih","Yang kamu dapatkan adalah\n" +
-                "apa yang kamu pilih dan \n" +
-                "kamu inginkan",R.drawable.image3));
+        mList.add(new ScreenItems("Dapatkan yang kamu pilih","Yang kamu dapatkan adalah apa yang kamu pilih dan kamu inginkan",R.drawable.image3));
 
         // set viewpager
         screenPager = findViewById(R.id.vpager);

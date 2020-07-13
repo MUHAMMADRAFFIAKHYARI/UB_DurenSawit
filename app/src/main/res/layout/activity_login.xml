@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:paddingRight="@dimen/padding_screen"
     android:paddingLeft="@dimen/padding_screen"
-    tools:context=".LoginActivity"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView9"
@@ -65,8 +63,8 @@
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
