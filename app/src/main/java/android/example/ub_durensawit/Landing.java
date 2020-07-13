@@ -48,16 +48,16 @@ public class Landing extends AppCompatActivity {
                     Fragment  selectedFragment = null;
 
                     switch (menuItem.getItemId()){
-                        case R.id.home:
+                        case R.id.navHome:
                             selectedFragment = new BerandaFragment();
                             break;
-                        case R.id.category:
+                        case R.id.navCategory:
                             selectedFragment = new KategoriFragment();
                             break;
-                        case R.id.transaction:
+                        case R.id.navTransaction:
                             selectedFragment = new TransaksiFragment();
                             break;
-                        case R.id.user:
+                        case R.id.navUser:
                             selectedFragment = new PenggunaFragment();
                             break;
                     }

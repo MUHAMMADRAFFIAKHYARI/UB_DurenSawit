@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
+        android:id="@+id/navHome"
         android:icon="@drawable/ic_beranda"
         android:title="Beranda"
         />
     <item
-        android:id="@+id/category"
+        android:id="@+id/navCategory"
         android:icon="@drawable/ic_category"
         android:title="Kategori"
         />
     <item
-        android:id="@+id/transaction"
+        android:id="@+id/navTransaction"
         android:icon="@drawable/ic_transaksi"
         android:title="Transaksi"
         />
     <item
-        android:id="@+id/user"
+        android:id="@+id/navUser"
         android:icon="@drawable/ic_user_icon"
         android:title="Pengguna"
         />

@@ -54,6 +54,14 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         validator = new Validator(this);
         validator.setValidationListener(this);
 
+        TextView toLoginR = findViewById(R.id.toLoginR);
+        toLoginR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
+
         //hilangin actionBar
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
             Window window = getWindow();
@@ -109,12 +117,15 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
 
     @Override
     public void onValidationSucceeded() {
-        Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();
-        Intent Login = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(Login);
+        /*Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();*/
+        startActivity(new Intent(RegisterActivity.this, VerificationActivity.class));
         finish();
     }
 
+    public void jalanPintas(View view){
+        startActivity(new Intent(RegisterActivity.this, VerificationActivity.class));
+        finish();
+    }
 
 
     @Override
@@ -164,9 +175,4 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         return true;
     }
 
-    public void loginText(View view) {
-        Intent toLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(toLogin);
-        finish();
-    }
 }
