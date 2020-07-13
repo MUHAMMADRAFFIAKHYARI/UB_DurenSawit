@@ -23,6 +23,7 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 
 import java.util.List;
+import java.util.Random;
 import java.util.regex.*;
 
 public class RegisterActivity extends AppCompatActivity implements Validator.ValidationListener {
@@ -90,6 +91,17 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
 
             }
         });
+
+    }
+
+    private String CodeGenerator(){
+        Random RandNum = new Random();
+        StringBuilder code = new StringBuilder();
+        for (int i=0;i <= 4; i++){
+            code.append(RandNum.nextInt(10));
+        }
+        return code.toString();
+
 
     }
     private void Validate(){

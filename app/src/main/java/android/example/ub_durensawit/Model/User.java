@@ -1,7 +1,12 @@
 package android.example.ub_durensawit.Model;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class User {
-private String nama,phone,email,password;
+    @Expose
+    @SerializedName("nama") private String nama;
+
+    private String phone,email,password;
 
 
 
