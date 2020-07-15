@@ -21,7 +21,7 @@ public class VerificationActivity extends AppCompatActivity {
         btnVerif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(VerificationActivity.this, Landing.class));
+                startActivity(new Intent(VerificationActivity.this, LandingActivity.class));
                 finish();
             }
         });

@@ -15,7 +15,7 @@
         <activity android:name=".MakananActivity" />
         <activity android:name=".ThanksActivity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".Landing" />
+        <activity android:name=".LandingActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".SplashScreen"

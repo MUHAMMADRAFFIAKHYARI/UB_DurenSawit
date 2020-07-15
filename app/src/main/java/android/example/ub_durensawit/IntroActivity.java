@@ -1,7 +1,6 @@
 package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -91,7 +90,7 @@ public class IntroActivity extends AppCompatActivity {
 
         // mengisi list screen pada viepager
         List<ScreenItems> mList = new ArrayList<>();
-        mList.add(new ScreenItems("Cari Semua Kebutuhanmu","temukan semua barang yang\n" +
+        mList.add(new ScreenItems("Cari Semua Kebutuhanmu","Temukan semua barang yang\n" +
                 "kamu butuh",R.drawable.image1));
         mList.add(new ScreenItems("Pilih apa kesuakaanmu","Pilih barang apa saja yang\n" +
                 "kamu suka",R.drawable.image2));
@@ -144,7 +143,7 @@ public class IntroActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            startActivity(new Intent(IntroActivity.this, Landing.class));
+            startActivity(new Intent(IntroActivity.this, LandingActivity.class));
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
