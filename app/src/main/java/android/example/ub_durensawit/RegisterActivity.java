@@ -115,11 +115,10 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     }
 
     //Method buat ngirim email
-    private void sendEmail() {
+    private void sendEmail(String email, String kode) {
         //Getting content for email
-        String email = "axelchristiant33@gmail.com";
-        String subject = "Hai";
-        String message = "Tes";
+        String subject = "Kode Verifikasi";
+        String message = kode;
 
         //Creating SendMail object
         SendMail sm = new SendMail(this, email, subject, message);
@@ -131,7 +130,20 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     @Override
     public void onValidationSucceeded() {
         /*Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();*/
-        startActivity(new Intent(RegisterActivity.this, VerificationActivity.class));
+        String email = InputEmail.getText().toString();
+        String nama = InputName.getText().toString();
+        String password = InputPassword.getText().toString();
+        String NoTelpon = InputPhoneNumber.getText().toString();
+        String kode = CodeGenerator();
+        sendEmail(email,kode);
+        Intent intent = new Intent(this, VerificationActivity.class);
+        intent.putExtra("kode",kode);
+        intent.putExtra("nama",nama);
+        intent.putExtra("email",email);
+        intent.putExtra("NoTelpon",NoTelpon);
+        intent.putExtra("kode",kode);
+
+        startActivity(intent);
         finish();
     }
 

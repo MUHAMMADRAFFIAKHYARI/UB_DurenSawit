@@ -1,6 +1,8 @@
 package android.example.ub_durensawit.SMTP;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.example.ub_durensawit.VerificationActivity;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -46,16 +48,22 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         //Showing progress dialog while sending email
+        /*
         progressDialog = ProgressDialog.show(context,"Sending message","Please wait...",false,false);
+        */
     }
+
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         //Dismissing the progress dialog
+       /*
         progressDialog.dismiss();
         //Showing a success message
         Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
+        */
+       // Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
     }
 
     @Override

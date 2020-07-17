@@ -4,6 +4,9 @@ public class Product {
     private String nama;
     private String kategori;
     public Product(String nama, String kategori){
-
+    this.nama = nama;
+    this.kategori = kategori;
     }
+
+
 }
