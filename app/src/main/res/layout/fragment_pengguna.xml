@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scrollIndicators="none"
+        android:scrollbars="none"
         >
 
         <RelativeLayout
