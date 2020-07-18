@@ -2,11 +2,13 @@ package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 public class ThanksActivity extends AppCompatActivity {
 
@@ -14,6 +16,14 @@ public class ThanksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanks);
+
+        Button aftTY = findViewById(R.id.aftTY);
+        aftTY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ThanksActivity.this, ItemBuyActivity.class));
+            }
+        });
 
         //hilangin actionBar
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){

@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:paddingRight="@dimen/padding_screen"
     android:paddingLeft="@dimen/padding_screen"
+    android:background="@color/colorGrey"
     tools:context=".ThanksActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/aftTY"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_primary_height"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="32dp"
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/poppins"
-        android:text="Tambah isi keranjang"
+        android:text="Beli seseuatu yang lain"
         android:textAllCaps="false"
-
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/intro_title3"
@@ -31,10 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Keranjang Anda Kosong"
+        android:text="Terima Kasih Sudah Belanja"
         android:textColor="@color/colorBlackBright"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -43,12 +42,13 @@
         android:id="@+id/intro_description3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins"
         android:gravity="center_horizontal"
-        android:text="tambahkan beberapa barang \n ke keranjang anda"
+        android:text="Anda bisa melihat riwayat  belanja
+anda di Riwayat Pembelian"
         android:textAlignment="center"
         android:textColor="@color/colorBlackBright"
         android:textSize="16sp"
+        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="@+id/intro_title3"
         app:layout_constraintStart_toStartOf="@+id/intro_title3"
         app:layout_constraintTop_toBottomOf="@+id/intro_title3" />
