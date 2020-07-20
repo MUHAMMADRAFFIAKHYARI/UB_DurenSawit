@@ -4,21 +4,27 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
     @SerializedName("nama")
+    @Expose
     private String nama;
 
     @SerializedName("NoTelpon")
+    @Expose
     private String NoTelpon;
 
     @SerializedName("email")
+    @Expose
     private String email;
 
     @SerializedName("password")
+    @Expose
     private String password;
 
     @SerializedName("value")
+    @Expose
     private String value;
 
     @SerializedName("message")
+    @Expose
     private String message;
 
 
