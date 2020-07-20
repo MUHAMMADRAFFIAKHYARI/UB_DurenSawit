@@ -2,6 +2,7 @@ package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
@@ -24,6 +25,8 @@ public class VerificationActivity extends AppCompatActivity {
     private EditText InputCode;
     private String TrueCode,nama,password,email,NoTelpon;
     private ApiInterface apiInterface;
+    private ProgressDialog progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class VerificationActivity extends AppCompatActivity {
             email = extras.getString("email");
             NoTelpon = extras.getString("kode");
         }
+        InputCode.setText(TrueCode);
 
 
 
@@ -67,6 +71,7 @@ public class VerificationActivity extends AppCompatActivity {
         String input_code = InputCode.getText().toString();
         if(TrueCode.equals(input_code)){
             Toast.makeText(this, "Kode Verifikasi Benar", Toast.LENGTH_LONG).show();
+            //insertUser();
             startActivity(new Intent(VerificationActivity.this, LandingActivity.class));
             finish();
         } else{
@@ -76,8 +81,11 @@ public class VerificationActivity extends AppCompatActivity {
 
     private void insertUser() {
 
-
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        progress = new ProgressDialog(this);
+        progress.setCancelable(false);
+        progress.setMessage("Loading ...");
+        progress.show();
 
         Call<User> call = apiInterface.insertUser(nama , email, password, NoTelpon);
         call.enqueue(new Callback<User>() {
@@ -85,10 +93,10 @@ public class VerificationActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 String value = response.body().getValue();
                 String message = response.body().getMessage();
+                progress.dismiss();
                 if (value.equals("1")){
                     Toast.makeText(VerificationActivity.this, message, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(VerificationActivity.this, LandingActivity.class));
-                    finish();
+
                 } else {
                     Toast.makeText(VerificationActivity.this, message, Toast.LENGTH_SHORT).show();
                 }
@@ -96,6 +104,7 @@ public class VerificationActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                progress.dismiss();
                 Toast.makeText(VerificationActivity.this, "Jaringan Error! "+ t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
