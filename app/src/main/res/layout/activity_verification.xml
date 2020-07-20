@@ -4,68 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="@dimen/padding_screen"
-    android:paddingLeft="@dimen/padding_screen"
     tools:context=".VerificationActivity">
 
-    <Button
-        android:id="@+id/btnVerif"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_primary_height"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="84dp"
-        android:background="@drawable/btn_rounded_primary"
-        android:fontFamily="@font/poppins"
-        android:text="Verifikasi"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/input_code"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/input_code" />
-
-    <TextView
-        android:id="@+id/intro_description4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center_horizontal"
-        android:text="kami telah mengirimkan kode  verifikasi melalui email anda,  silahkan dicek dan masukkan  kodenya dibawah ini"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <EditText
-        android:id="@+id/input_code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/poppins"
-        android:hint="Masukkan kode verifikasi"
-        android:inputType="number|textEmailAddress"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/intro_description4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/intro_description4"
-        app:layout_constraintTop_toBottomOf="@+id/intro_description4" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_verification"
-        tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/padding_screen"
+            android:paddingRight="@dimen/padding_screen">
+
+            <Button
+                android:id="@+id/btnVerif"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_primary_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/btn_rounded_primary"
+                android:fontFamily="@font/poppins"
+                android:text="Verifikasi"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/input_code"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/input_code"
+                app:layout_constraintTop_toBottomOf="@+id/input_code" />
+
+            <TextView
+                android:id="@+id/intro_description4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_horizontal"
+                android:text="kami telah mengirimkan kode  verifikasi melalui email anda,  silahkan dicek dan masukkan  kodenya dibawah ini"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlackBright"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+            <EditText
+                android:id="@+id/input_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/poppins"
+                android:hint="Masukkan kode verifikasi"
+                android:inputType="number|textEmailAddress"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlackBright"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/intro_description4"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/intro_description4"
+                app:layout_constraintTop_toBottomOf="@+id/intro_description4" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_verification"
+                tools:ignore="VectorDrawableCompat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

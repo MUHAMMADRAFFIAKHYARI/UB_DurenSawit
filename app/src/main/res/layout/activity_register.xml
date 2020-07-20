@@ -4,149 +4,178 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="@dimen/padding_screen"
-    android:paddingLeft="@dimen/padding_screen"
     tools:context=".RegisterActivity"
   >
 
-    <Button
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_secondary_height"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_rounded_secondary"
-        android:drawableLeft="@drawable/ic_icons8_google"
-        android:fontFamily="@font/poppins"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="Daftar dengan Akun Google"
-        android:textAllCaps="false"
-        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Buat akun anda"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:paddingLeft="@dimen/padding_screen"
+            android:paddingRight="@dimen/padding_screen">
 
-    <EditText
-        android:id="@+id/register_name_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/poppins"
-        android:hint="@string/nama"
-        android:inputType="textPersonName"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="30dp" />
+            <Button
+                android:id="@+id/googleLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_secondary_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_rounded_secondary"
+                android:drawableLeft="@drawable/ic_icons8_google"
+                android:fontFamily="@font/poppins"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Daftar dengan Akun Google"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <EditText
-        android:id="@+id/register_email_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/poppins"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/register_name_input"
-        tools:layout_editor_absoluteX="30dp" />
-    <EditText
-        android:id="@+id/register_phone_number_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/poppins"
-        android:hint="@string/no_telephone_hp"
-        android:inputType="phone"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_input"
-        tools:layout_editor_absoluteX="30dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Buat akun anda"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/register_password_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/poppins"
-        android:hint="@string/kata_sandi"
-        android:inputType="textPassword"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/register_phone_number_input"
-        tools:layout_editor_absoluteX="30dp" />
+            <EditText
+                android:id="@+id/register_name_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/nama"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorBlackBright"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:layout_editor_absoluteX="30dp" />
 
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_primary_height"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/btn_rounded_primary"
-        android:fontFamily="@font/poppins"
-        android:text="Daftar"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/register_password_input"
-        app:layout_constraintTop_toBottomOf="@+id/register_password_input" />
+            <EditText
+                android:id="@+id/register_email_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorBlackBright"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/register_name_input"
+                tools:layout_editor_absoluteX="30dp" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginBottom="32dp"
-        android:fontFamily="@font/poppins"
-        android:text="Sudah Punya Akun ?"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/register_button" />
+            <EditText
+                android:id="@+id/register_phone_number_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/no_telephone_hp"
+                android:inputType="phone"
+                android:textColor="@color/colorBlackBright"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/register_email_input"
+                tools:layout_editor_absoluteX="30dp" />
 
-    <TextView
-        android:id="@+id/toLoginR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Login"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
+            <EditText
+                android:id="@+id/register_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/kata_sandi"
+                android:inputType="textPassword"
+                android:textColor="@color/colorBlackBright"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/register_phone_number_input"
+                tools:layout_editor_absoluteX="30dp" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Atau"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        android:onClick="jalanPintas"
-        app:layout_constraintEnd_toEndOf="@+id/register_button"
-        app:layout_constraintStart_toStartOf="@+id/register_button"
-        app:layout_constraintTop_toBottomOf="@+id/register_button" />
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_primary_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_rounded_primary"
+                android:fontFamily="@font/poppins"
+                android:text="Daftar"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/register_password_input"
+                app:layout_constraintTop_toBottomOf="@+id/register_password_input" />
 
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:onClick="jalanPintas"
+                android:text="Atau"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/register_button"
+                app:layout_constraintStart_toStartOf="@+id/register_button"
+                app:layout_constraintTop_toBottomOf="@+id/register_button" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/googleLogin">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Sudah Punya Akun ?"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/toLoginR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Login"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintStart_toEndOf="@+id/textView5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
