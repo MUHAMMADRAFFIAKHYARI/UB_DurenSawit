@@ -139,6 +139,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         Intent intent = new Intent(this, VerificationActivity.class);
         intent.putExtra("kode",kode);
         intent.putExtra("nama",nama);
+        intent.putExtra("password",password);
         intent.putExtra("email",email);
         intent.putExtra("NoTelpon",NoTelpon);
         intent.putExtra("kode",kode);

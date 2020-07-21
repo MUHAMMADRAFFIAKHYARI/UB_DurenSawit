@@ -2,6 +2,7 @@ package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.example.ub_durensawit.DbConn.ApiClient;
@@ -45,7 +46,6 @@ public class VerificationActivity extends AppCompatActivity {
             email = extras.getString("email");
             NoTelpon = extras.getString("kode");
         }
-        InputCode.setText(TrueCode);
 
 
 
@@ -71,9 +71,7 @@ public class VerificationActivity extends AppCompatActivity {
         String input_code = InputCode.getText().toString();
         if(TrueCode.equals(input_code)){
             Toast.makeText(this, "Kode Verifikasi Benar", Toast.LENGTH_LONG).show();
-            //insertUser();
-            startActivity(new Intent(VerificationActivity.this, LandingActivity.class));
-            finish();
+            insertUser();
         } else{
             Toast.makeText(this, "Kode Verifikasi Salah", Toast.LENGTH_LONG).show();
         }
@@ -84,28 +82,29 @@ public class VerificationActivity extends AppCompatActivity {
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         progress = new ProgressDialog(this);
         progress.setCancelable(false);
-        progress.setMessage("Loading ...");
+        progress.setMessage("Mohon tunggu sebentar");
         progress.show();
-
-        Call<User> call = apiInterface.insertUser(nama , email, password, NoTelpon);
+        Call<User> call = apiInterface.createUser(nama,email,password,NoTelpon);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                String value = response.body().getValue();
-                String message = response.body().getMessage();
                 progress.dismiss();
-                if (value.equals("1")){
-                    Toast.makeText(VerificationActivity.this, message, Toast.LENGTH_SHORT).show();
-
+                User responseUser = response.body();
+                if (response.isSuccessful() && responseUser != null) {
+                    Toast.makeText(VerificationActivity.this,"Data berhasil ditambahkan",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(VerificationActivity.this, LandingActivity.class));
+                    finish();
                 } else {
-                    Toast.makeText(VerificationActivity.this, message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VerificationActivity.this,"Data gagal ditambahkan",Toast.LENGTH_LONG);
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 progress.dismiss();
-                Toast.makeText(VerificationActivity.this, "Jaringan Error! "+ t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(VerificationActivity.this,
+                        "Error is " + t.getMessage()
+                        , Toast.LENGTH_LONG).show();
             }
         });
     }
