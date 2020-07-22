@@ -4,63 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="@dimen/padding_screen"
-    android:paddingLeft="@dimen/padding_screen"
     android:background="@color/colorGrey"
     tools:context=".ThanksActivity">
 
-    <Button
-        android:id="@+id/aftTY"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_primary_height"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/btn_rounded_primary"
-        android:fontFamily="@font/poppins"
-        android:text="Beli seseuatu yang lain"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/intro_title3"
-        app:layout_constraintStart_toStartOf="@+id/intro_title3"
-        app:layout_constraintTop_toBottomOf="@+id/intro_description3" />
-
-    <TextView
-        android:id="@+id/intro_title3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Terima Kasih Sudah Belanja"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <TextView
-        android:id="@+id/intro_description3"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Anda bisa melihat riwayat  belanja
-anda di Riwayat Pembelian"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlackBright"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintEnd_toEndOf="@+id/intro_title3"
-        app:layout_constraintStart_toStartOf="@+id/intro_title3"
-        app:layout_constraintTop_toBottomOf="@+id/intro_title3" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingLeft="@dimen/padding_screen"
+        android:paddingRight="@dimen/padding_screen"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_thanks"
-        tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/aftTY"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_primary_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/btn_rounded_primary"
+            android:fontFamily="@font/poppins"
+            android:text="Beli seseuatu yang lain"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/intro_title3"
+            app:layout_constraintStart_toStartOf="@+id/intro_title3"
+            app:layout_constraintTop_toBottomOf="@+id/intro_description3" />
+
+        <TextView
+            android:id="@+id/intro_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Terima Kasih Sudah Belanja"
+            android:textColor="@color/colorBlackBright"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/intro_description3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Anda bisa melihat riwayat  belanja
+anda di Riwayat Pembelian"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlackBright"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintEnd_toEndOf="@+id/intro_title3"
+            app:layout_constraintStart_toStartOf="@+id/intro_title3"
+            app:layout_constraintTop_toBottomOf="@+id/intro_title3" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_thanks"
+            tools:ignore="VectorDrawableCompat" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

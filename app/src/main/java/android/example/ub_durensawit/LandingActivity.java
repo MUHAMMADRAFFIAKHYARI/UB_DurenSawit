@@ -36,10 +36,11 @@ public class LandingActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
+        /*load bottom navbar*/
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new BerandaFragment()).commit();
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -67,24 +68,4 @@ public class LandingActivity extends AppCompatActivity {
                 }
             };
 
-    boolean doubleBackToExitPressedOnce = false;
-
-    /*Double click buat keluar*/
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Klik sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
-    }
 }

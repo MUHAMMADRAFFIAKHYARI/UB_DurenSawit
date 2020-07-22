@@ -118,34 +118,6 @@
                     android:background="@color/colorWhite">
 
                     <TextView
-                        android:id="@+id/paymethod"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Metode Pembayaran"
-                        android:textSize="16sp"
-                        app:fontFamily="@font/poppins" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@id/paymethod"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_right_arrow" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/colorGrey"></View>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/colorWhite">
-
-                    <TextView
                         android:id="@+id/history"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -158,64 +130,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignRight="@id/history"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_right_arrow" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/colorGrey"></View>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/colorWhite">
-
-                    <TextView
-                        android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Alamat"
-                        android:textSize="16sp"
-                        app:fontFamily="@font/poppins" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@id/address"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_right_arrow" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/colorGrey"></View>
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/colorWhite">
-
-                    <TextView
-                        android:id="@+id/config"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Pengaturan"
-                        android:textSize="16sp"
-                        app:fontFamily="@font/poppins" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@id/config"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_right_arrow" />
 
@@ -254,34 +168,6 @@
                         android:layout_alignParentBottom="true"
                         android:background="@color/colorGrey"></View>
 
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/colorWhite">
-
-                    <TextView
-                        android:id="@+id/helpCent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Pusat Bantuan"
-                        android:textSize="16sp"
-                        app:fontFamily="@font/poppins" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignRight="@id/helpCent"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_right_arrow" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/colorGrey"></View>
                 </RelativeLayout>
 
                 <RelativeLayout

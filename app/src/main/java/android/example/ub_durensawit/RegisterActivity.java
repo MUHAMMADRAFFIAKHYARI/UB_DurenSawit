@@ -148,12 +148,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         finish();
     }
 
-    public void jalanPintas(View view){
-        startActivity(new Intent(RegisterActivity.this, VerificationActivity.class));
-        finish();
-    }
-
-
     @Override
     public void onValidationFailed(List<ValidationError> errors) {
         for (ValidationError error : errors) {

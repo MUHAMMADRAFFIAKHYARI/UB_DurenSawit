@@ -54,7 +54,6 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         tabIndicator = (TabLayout) findViewById(R.id.tab_indicator);
-        textViewToLogin = (TextView) findViewById(R.id.login_text);
 
         buttonToRegister = findViewById(R.id.register_button);
         buttonToRegister.setOnClickListener(new View.OnClickListener() {

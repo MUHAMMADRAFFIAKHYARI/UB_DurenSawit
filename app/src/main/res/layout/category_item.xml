@@ -9,7 +9,7 @@
         android:layout_width="170dp"
         android:layout_height="250dp"
         app:cardCornerRadius="20dp"
-        app:contentPaddingTop="35dp"
+        app:contentPaddingTop="40dp"
         app:contentPaddingLeft="10dp"
         app:contentPaddingRight="10dp"
         android:paddingBottom="30dp"
@@ -51,15 +51,6 @@
             android:textSize="12sp"
             android:fontFamily="@font/poppins"
             android:text="Rp. 2.300"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_cartunselected"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="170dp"
             />
 
     </androidx.cardview.widget.CardView>
