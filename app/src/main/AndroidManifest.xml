@@ -14,12 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ItemBuyActivity"></activity>
-        <activity android:name=".AllitemActivity" />
+        <activity android:name=".AllitemActivity" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity android:name=".VerificationActivity" />
         <activity android:name=".MakananActivity" />
         <activity android:name=".ThanksActivity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".LandingActivity" />
+        <activity android:name=".LandingActivity" >
+
+        </activity>
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".SplashScreen"
