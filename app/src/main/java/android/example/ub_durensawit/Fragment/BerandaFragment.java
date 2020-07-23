@@ -1,8 +1,10 @@
 package android.example.ub_durensawit.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.example.ub_durensawit.CartActivity;
 import android.example.ub_durensawit.R;
+import android.example.ub_durensawit.RecyclerViewAdapterHome;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +14,19 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class BerandaFragment extends Fragment {
 
     private ImageView cartList;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container,false);
+
 
 
         cartList = view.findViewById(R.id.toCart);
@@ -31,6 +37,7 @@ public class BerandaFragment extends Fragment {
                 startActivity(new Intent(getActivity(), CartActivity.class));
             }
         });
+
 
         return view;
     }
