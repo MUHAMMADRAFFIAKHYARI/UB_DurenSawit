@@ -5,4 +5,8 @@
     <string name="kata_sandi">kata sandi</string>
     <string name="nama">nama</string>
     <string name="no_telephone_hp">no telephone/hp</string>
+    <string name="transaction_warn">Transaksi berikutnya akan dilanjutkan melalui WhatsApp, barang-barang yang anda telah pilih untuk dibeli akan dimuat secara otomatis dalam struk permbayaran setelah anda menyetujui bagan ini.
+        \n \n
+
+        Apakah anda setuju untuk melanjutkannya melalui WhatsApp?</string>
 </resources>

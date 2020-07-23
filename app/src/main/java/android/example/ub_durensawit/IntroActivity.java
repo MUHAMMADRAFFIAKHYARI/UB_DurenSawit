@@ -67,12 +67,7 @@ public class IntroActivity extends AppCompatActivity {
         buttonToGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.login_button:
-                        signIn();
-                        break;
-                }
-
+               startActivity(new Intent(IntroActivity.this, LoginActivity.class));
             }
         });
 

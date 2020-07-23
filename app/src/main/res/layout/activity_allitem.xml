@@ -7,14 +7,45 @@
     tools:context=".AllitemActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_allItem"
+        android:scrollbarSize="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rcv_allItem"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
         tools:ignore="MissingConstraints">
 
 
-
     </androidx.recyclerview.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_primary_height"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableRight="@drawable/ic_search"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:background="@drawable/btn_rounded_secondary"
+        android:inputType="textPersonName"
+        android:hint="Apa yang anda cari?"
+        android:paddingLeft="@dimen/padding_screen"
+        android:paddingRight="@dimen/padding_screen"
+        android:textColor="@color/colorGreyDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

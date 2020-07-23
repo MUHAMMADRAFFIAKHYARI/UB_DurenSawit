@@ -17,11 +17,11 @@ public class ThanksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanks);
 
-        Button aftTY = findViewById(R.id.aftTY);
+        Button aftTY = findViewById(R.id.testBuy);
         aftTY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ThanksActivity.this, ItemBuyActivity.class));
+                finish();
             }
         });
 

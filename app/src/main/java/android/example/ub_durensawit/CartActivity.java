@@ -23,7 +23,8 @@ public class CartActivity extends AppCompatActivity {
         addCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CartActivity.this, ThanksActivity.class));
+                startActivity(new Intent(CartActivity.this, ItemBuyActivity.class));
+                finish();
             }
         });
 

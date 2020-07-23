@@ -46,13 +46,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:layout_marginBottom="-100dp"
+                android:layout_marginTop="68dp"
                 android:background="@drawable/rounded_white"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                app:layout_constraintVertical_bias="0.614">
+                app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -131,7 +128,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginLeft="12dp"
                     android:background="@drawable/rounded_white_stroke"
-                    app:layout_constraintStart_toStartOf="@+id/aftTY"
+                    app:layout_constraintStart_toStartOf="@+id/goBuy"
                     app:layout_constraintTop_toTopOf="@+id/textView15"
                     tools:ignore="MissingConstraints">
 
@@ -150,13 +147,14 @@
 
                     <TextView
                         android:id="@+id/decItem"
-                        android:layout_width="30dp"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="15dp"
                         android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_horizontal"
                         android:onClick="decreaseItem"
                         android:text="-"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -165,13 +163,14 @@
 
                     <TextView
                         android:id="@+id/incItem"
-                        android:layout_width="wrap_content"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:layout_marginRight="25dp"
+                        android:layout_marginRight="15dp"
                         android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_horizontal"
                         android:onClick="increaseItem"
                         android:text="+"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +181,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Button
-                    android:id="@+id/aftTY"
+                    android:id="@+id/goBuy"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/button_primary_height"
                     android:layout_gravity="center_horizontal"
@@ -210,9 +209,9 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginRight="30dp"
                     android:background="@drawable/rounded_white_stroke"
-                    app:layout_constraintBottom_toBottomOf="@+id/aftTY"
+                    app:layout_constraintBottom_toBottomOf="@+id/goBuy"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/aftTY"
+                    app:layout_constraintTop_toTopOf="@+id/goBuy"
                     app:srcCompat="@drawable/ic_cartunselected"
                     tools:ignore="VectorDrawableCompat" />
 

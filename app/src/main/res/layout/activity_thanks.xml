@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/aftTY"
+            android:id="@+id/testBuy"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_primary_height"
             android:layout_gravity="center_horizontal"

@@ -1,78 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
         app:cardCornerRadius="10dp"
 
-        app:cardElevation="0dp"
-        >
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:id="@+id/product_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:id="@+id/product_image"
-                android:src="@drawable/ic_launcher_background"/>
+                android:src="@drawable/ic_launcher_background" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="nama produk"
-                android:layout_marginLeft="30dp"
-                android:gravity="center"
                 android:id="@+id/product_name"
-                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="nama produk"
                 android:textColor="@color/colorAccent"
-                />
+                android:textSize="16sp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="category"
-                android:layout_marginLeft="30dp"
-                android:gravity="center"
                 android:id="@+id/product_category"
-                android:textSize="18dp"
-                android:fontFamily="@font/poppins_bold"
-                android:textColor="@color/colorGreyDark"
-                />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="harga"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/poppins_bold"
                 android:gravity="center"
-                android:id="@+id/product_price"
-                android:textSize="18dp"
-                android:fontFamily="@font/poppins"
+                android:text="category"
                 android:textColor="@color/colorGreyDark"
-                />
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="harga"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
 
-
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
-    
 
 
 </LinearLayout>

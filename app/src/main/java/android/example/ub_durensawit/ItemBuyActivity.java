@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class ItemBuyActivity extends AppCompatActivity {
 
-    TextView quantityItem, prodName, prodCtg, prodPrice, coba;
+    TextView quantityItem, prodName, prodCtg, prodPrice, coba, goBuy;
     ImageView prodImage;
     int angka = 1;
     int position;
@@ -22,10 +22,17 @@ public class ItemBuyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_buy);
 
+
+        goBuy = findViewById(R.id.goBuy);
+        goBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ItemBuyActivity.this, ListBuyActivity.class));
+            }
+        });
+
         ImageView backArr = findViewById(R.id.backArr);
         quantityItem = findViewById(R.id.qtyItem);
-
-
         prodImage = findViewById(R.id.imageView4);
         prodName = findViewById(R.id.textView4);
         prodCtg = findViewById(R.id.textView14);
@@ -38,9 +45,6 @@ public class ItemBuyActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
 
 
         Intent i = getIntent();
