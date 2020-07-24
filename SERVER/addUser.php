@@ -4,30 +4,29 @@ require_once 'connect.php';
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ){
 
-    $name = $_POST['name'];
+    $nama = $_POST['nama'];
     $email = $_POST['email'];
 	$NoTelpon = $_POST['NoTelpon'];
 	$password = $_POST['password'];
 	
 
-    if ( $name == '' || $email == '' ){
+    if ( $nama == '' || $email == '' ){
 
-            $response["value"] = 0;
-            $response["message"] = "data anda kosong";
+            $response = array("message"=>"Data anda kosong");
+ 
             echo json_encode($response);
-
     } else {
 
-        $query = "INSERT INTO users (name,email,password,NoTelpon) VALUES ('$name', '$email','$password','$NoTelpon')";
+        $query = "INSERT INTO users (nama,email,password,NoTelpon) VALUES ('$nama', '$email','$password','$NoTelpon')";
 	
 
         if ( mysqli_query($conn, $query) ){
-            $response["value"] = 1;
-            $response["message"] = $name." Sukses ditambahkan";
+            $response = array("message"=>"Data Berhasil ditambahkan");
+ 
             echo json_encode($response);
         } else {
-            $response["value"] = 0;
-            $response["message"] = "Oops! ".$name." Gagal ditambahkan, \n Silahkan Coba lagi!";
+            $response = array("message"=>"Data gagal ditambahkan");
+ 
             echo json_encode($response);
         }
     }
@@ -35,9 +34,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     mysqli_close($conn);
 
 } else {
-    $response["value"] = 0;
-    $response["message"] = "oops! Coba lagi!";
-    echo json_encode($response);
+             $response = array("message"=>"Coba Lagi");
+ 
+            echo json_encode($response);
 }
 
 ?>
