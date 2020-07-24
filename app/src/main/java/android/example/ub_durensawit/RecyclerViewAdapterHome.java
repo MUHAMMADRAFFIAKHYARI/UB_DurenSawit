@@ -39,9 +39,9 @@ public class RecyclerViewAdapterHome extends RecyclerView.Adapter<RecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull TheViewHolder holder, int position) {
         holder.imageView.setImageResource(productImage[position]);
-        holder.textView.setText( productName[position]);
-        holder.textView.setText( productCategory[position]);
-        holder.textView.setText("Rp. " + productPrice[position]);
+        holder.nama_product.setText(productName[position]);
+        holder.category_product.setText(productCategory[position]);
+        holder.price_product.setText("Rp. " + productPrice[position]);
     }
 
     @Override
@@ -52,15 +52,15 @@ public class RecyclerViewAdapterHome extends RecyclerView.Adapter<RecyclerViewAd
     public class TheViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView textView;
+        TextView nama_product, category_product, price_product;
 
         public TheViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.product_image);
-            textView = itemView.findViewById(R.id.product_name);
-            textView = itemView.findViewById(R.id.product_category);
-            textView = itemView.findViewById(R.id.product_price);
+            nama_product = itemView.findViewById(R.id.product_name);
+            category_product = itemView.findViewById(R.id.product_category);
+            price_product = itemView.findViewById(R.id.product_price);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
