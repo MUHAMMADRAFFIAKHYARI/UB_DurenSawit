@@ -1,7 +1,8 @@
-package android.example.ub_durensawit;
+package android.example.ub_durensawit.Adapter;
 
 import android.content.Intent;
-import android.os.Parcelable;
+import android.example.ub_durensawit.ItemBuyActivity;
+import android.example.ub_durensawit.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
