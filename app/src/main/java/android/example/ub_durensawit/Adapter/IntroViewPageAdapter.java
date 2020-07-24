@@ -1,7 +1,9 @@
-package android.example.ub_durensawit;
+package android.example.ub_durensawit.Adapter;
 
 
 import android.content.Context;
+import android.example.ub_durensawit.R;
+import android.example.ub_durensawit.ScreenItems;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.example.ub_durensawit.Adapter.IntroViewPageAdapter;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
