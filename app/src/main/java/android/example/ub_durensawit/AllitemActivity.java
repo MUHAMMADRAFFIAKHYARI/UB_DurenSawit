@@ -17,10 +17,10 @@ public class AllitemActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapterHome recyclerViewAdapterHome;
 
-    int [] imageProduct = {R.drawable.product1,R.drawable.product2,R.drawable.product3,R.drawable.product4,R.drawable.product1};
-    String [] nameProduct = {"Mie Goreng", "T-Shirt",  "Baygon", "Indomie", "Mie Goreng"};
-    String [] categoryProduct = {"makanan", "pakaian",  "kebutuhan", "makanan", "makanan"};
-    String [] priceProduct = {"33.23", "14.303",  "100.00", "34.00", "2.000"};
+    int [] imageProduct = {R.drawable.product1,R.drawable.product2,R.drawable.product3,R.drawable.product4,R.drawable.product1,R.drawable.product1,R.drawable.product2,};
+    String [] nameProduct = {"Mie Goreng", "T-Shirt",  "Baygon", "Indomie", "Mie Goreng","Mie Goreng", "T-Shirt",};
+    String [] categoryProduct = {"makanan", "pakaian",  "kebutuhan", "makanan", "makanan","makanan", "pakaian",};
+    String [] priceProduct = {"33.23", "14.303",  "100.00", "34.00", "2.000","33.23", "14.303", };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

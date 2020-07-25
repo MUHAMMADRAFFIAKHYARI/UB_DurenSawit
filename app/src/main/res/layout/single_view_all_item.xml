@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:paddingTop="20dp"
     >
 
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
@@ -14,8 +15,14 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="10dp"
-
-        app:cardElevation="0dp">
+        app:cardElevation="1dp"
+        android:divider="@android:color/transparent"
+        app:cardPreventCornerOverlap="false"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:outlineAmbientShadowColor="@color/colorWhite"
+        android:translationZ="3dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
