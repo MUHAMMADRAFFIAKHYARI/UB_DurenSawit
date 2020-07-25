@@ -46,6 +46,7 @@ public class VerificationActivity extends AppCompatActivity {
             email = extras.getString("email");
             NoTelpon = extras.getString("kode");
         }
+        //InputCode.setText(TrueCode);
 
 
 
@@ -91,7 +92,7 @@ public class VerificationActivity extends AppCompatActivity {
                 progress.dismiss();
                 User responseUser = response.body();
                 if (response.isSuccessful() && responseUser != null) {
-                    Toast.makeText(VerificationActivity.this,"Data berhasil ditambahkan",Toast.LENGTH_LONG).show();
+                    Toast.makeText(VerificationActivity.this,"Pendaftaran berhasil",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(VerificationActivity.this, LandingActivity.class));
                     finish();
                 } else {
@@ -103,7 +104,7 @@ public class VerificationActivity extends AppCompatActivity {
             public void onFailure(Call<User> call, Throwable t) {
                 progress.dismiss();
                 Toast.makeText(VerificationActivity.this,
-                        "Error is " + t.getMessage()
+                        "Jaringan Bermasalah " + t.getMessage()
                         , Toast.LENGTH_LONG).show();
             }
         });

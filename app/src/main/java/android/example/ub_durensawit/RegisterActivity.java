@@ -1,6 +1,11 @@
 package android.example.ub_durensawit;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.example.ub_durensawit.DbConn.ApiClient;
+import android.example.ub_durensawit.DbConn.ApiInterface;
+import android.example.ub_durensawit.Model.User;
 import android.example.ub_durensawit.SMTP.SendMail;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,13 +31,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.regex.*;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class RegisterActivity extends AppCompatActivity implements Validator.ValidationListener {
 
     private Button RegisterButton;
-    private Button tesButton;
     @NotEmpty
     @Length(min = 4, max =  30)
-    @Pattern(regex =  "^[a-zA-Z]*$")
+    @Pattern(regex =  "^[a-zA-Z ]*$")
     private EditText InputName;
     @NotEmpty
     private EditText InputPhoneNumber;
@@ -43,7 +51,11 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     @NotEmpty
     @Email
     private EditText InputEmail;
+
     private Validator validator;
+
+    private ApiInterface apiInterface;
+    private ProgressDialog progress;
 
 
     @Override
@@ -130,22 +142,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     @Override
     public void onValidationSucceeded() {
         /*Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();*/
-        String email = InputEmail.getText().toString();
-        String nama = InputName.getText().toString();
-        String password = InputPassword.getText().toString();
-        String NoTelpon = InputPhoneNumber.getText().toString();
-        String kode = CodeGenerator();
-        sendEmail(email,kode);
-        Intent intent = new Intent(this, VerificationActivity.class);
-        intent.putExtra("kode",kode);
-        intent.putExtra("nama",nama);
-        intent.putExtra("password",password);
-        intent.putExtra("email",email);
-        intent.putExtra("NoTelpon",NoTelpon);
-        intent.putExtra("kode",kode);
 
-        startActivity(intent);
-        finish();
     }
 
     @Override
@@ -160,7 +157,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
                 if(view.getId() == R.id.register_name_input){
                     String nama = textView.getText().toString();
                     ((EditText) view).setError(" Nama harus memiliki 4-30 huruf (tidak boleh angka)");
-
                 }
 
                 else if(view.getId() == R.id.register_password_input){
@@ -189,10 +185,54 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
         }
     }
 
+    private void verificationSuccessful(String email){
+        String nama = InputName.getText().toString();
+        String password = InputPassword.getText().toString();
+        String NoTelpon = InputPhoneNumber.getText().toString();
+        String kode = CodeGenerator();
+
+        sendEmail(email,kode);
+
+        Intent intent = new Intent(this, VerificationActivity.class);
+        intent.putExtra("kode",kode);
+        intent.putExtra("nama",nama);
+        intent.putExtra("password",password);
+        intent.putExtra("email",email);
+        intent.putExtra("NoTelpon",NoTelpon);
+        intent.putExtra("kode",kode);
+
+        startActivity(intent);
+        finish();
+    }
     //cek Apakah email ada
-    public boolean EmailExist(String email){
-        //Sebentar yaa wkwkwk
-        return true;
+    private void checkEmail(){
+        final String email = InputEmail.getText().toString();
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        progress = new ProgressDialog(this);
+        progress.setCancelable(false);
+        progress.setMessage("Mohon tunggu sebentar");
+        progress.show();
+        Call<User> call = apiInterface.emailCheck(email);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                progress.dismiss();
+                User responseUser = response.body();
+                if (response.body().getValue().equals("1")) {
+                    verificationSuccessful(email);
+                } else {
+                   InputEmail.setError("Email sudah terdaftar akun lain");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                progress.dismiss();
+                Toast.makeText(RegisterActivity.this,
+                        "Jaringan Bermasalah " + t.getMessage()
+                        , Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

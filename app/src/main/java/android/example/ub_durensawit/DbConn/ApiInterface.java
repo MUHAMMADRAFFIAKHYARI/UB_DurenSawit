@@ -11,7 +11,6 @@ public interface ApiInterface {
     @GET("retrofit/POST/.php")
     Call<List<User>> getUser();
     */
-
     @FormUrlEncoded
     @POST("addUser.php")
     public Call<User> createUser(
@@ -21,6 +20,11 @@ public interface ApiInterface {
             @Field("NoTelpon") String NoTelpon
     );
 
+    @FormUrlEncoded
+    @POST("emailCheck.php")
+    public Call<User> emailCheck(
+    @Field("email") String email
+    );
 
 
 }
