@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
+import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
+import android.example.ub_durensawit.DbConn.local.CartDataSource;
+import android.example.ub_durensawit.DbConn.local.CartDatabase;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 import android.os.Bundle;
@@ -26,6 +29,10 @@ public class ItemBuyActivity extends AppCompatActivity {
     TextView quantityItem, prodName, prodCtg, prodPrice, coba, goBuy;
     String productName, productCategory;
     SharedPreferences sharedPreferences;
+
+    public static CartDatabase cartDatabase;
+    public static CartRepository cartRepository;
+
     int productPrice, productQuantity,productId;
     ImageView prodImage;
     int angka = 1;
@@ -80,6 +87,14 @@ public class ItemBuyActivity extends AppCompatActivity {
         prodPrice.setText(productPrice);
 
     }
+
+    private void initDB(){
+        cartDatabase = CartDatabase.getInstance(this);
+        cartRepository = CartRepository.getInstance(CartDataSource.getInstance(cartDatabase.cartDao()));
+
+    }
+
+
     private void getProduct(int id){
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         progress = new ProgressDialog(this);
