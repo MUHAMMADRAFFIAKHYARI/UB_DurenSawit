@@ -10,7 +10,7 @@ import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
 import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
 import android.example.ub_durensawit.DbConn.local.CartDataSource;
-import android.example.ub_durensawit.DbConn.local.CartDatabase;
+/*import android.example.ub_durensawit.DbConn.local.CartDatabase;*/
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class ItemBuyActivity extends AppCompatActivity {
     String productName, productCategory;
     SharedPreferences sharedPreferences;
 
-    public static CartDatabase cartDatabase;
+    /*public static CartDatabase cartDatabase;*/
     public static CartRepository cartRepository;
 
     int productPrice, productQuantity,productId;
@@ -49,7 +49,7 @@ public class ItemBuyActivity extends AppCompatActivity {
         goBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intoTheCart();
+               /* intoTheCart();*/
                 startActivity(new Intent(ItemBuyActivity.this, ListBuyActivity.class));
             }
         });
@@ -88,12 +88,13 @@ public class ItemBuyActivity extends AppCompatActivity {
 
     }
 
-    private void initDB(){
+ /*   private void initDB(){
         cartDatabase = CartDatabase.getInstance(this);
         cartRepository = CartRepository.getInstance(CartDataSource.getInstance(cartDatabase.cartDao()));
 
-    }
+    }*/
 
+/*
 
     private void getProduct(int id){
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
@@ -137,6 +138,7 @@ public class ItemBuyActivity extends AppCompatActivity {
         editor.commit();
 
     }
+*/
 
 
 
