@@ -8,7 +8,7 @@
         android:id="@+id/categBg"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@drawable/rounded_white">
+        android:background="@drawable/half_rounded_white">
 
         <ImageView
             android:id="@+id/categ_icon"

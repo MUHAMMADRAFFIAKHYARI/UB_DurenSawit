@@ -7,27 +7,41 @@
     tools:context=".AllitemActivity"
     >
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="64dp"
+        android:text="Semua Barang"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:fontFamily="@font/poppins_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_primary_height"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:background="@drawable/btn_rounded_secondary"
         android:drawableRight="@drawable/ic_search"
         android:fontFamily="@font/poppins_medium"
-        android:textSize="14sp"
-        android:background="@drawable/btn_rounded_secondary"
-        android:inputType="textPersonName"
         android:hint="Apa yang anda cari?"
+        android:inputType="textPersonName"
         android:paddingLeft="@dimen/padding_screen"
         android:paddingRight="@dimen/padding_screen"
         android:textColor="@color/colorGreyDark"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
     <androidx.recyclerview.widget.RecyclerView

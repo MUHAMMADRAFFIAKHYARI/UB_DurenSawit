@@ -50,7 +50,7 @@ public class ItemBuyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //intoTheCart();
-                startActivity(new Intent(ItemBuyActivity.this, ListBuyActivity.class));
+                startActivity(new Intent(ItemBuyActivity.this, CartActivity.class));
             }
         });
 

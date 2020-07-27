@@ -1,4 +1,3 @@
-/*
 package android.example.ub_durensawit.DbConn.local;
 
 import android.content.Context;
@@ -29,4 +28,3 @@ public static CartDatabase getInstance(Context context){
 }
 
 }
-*/

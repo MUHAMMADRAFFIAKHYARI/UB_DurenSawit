@@ -45,7 +45,7 @@
             <Button
                 android:id="@+id/toAllitem"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/button_primary_height"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/btn_rounded_secondary"
                 android:drawableRight="@drawable/ic_search"
