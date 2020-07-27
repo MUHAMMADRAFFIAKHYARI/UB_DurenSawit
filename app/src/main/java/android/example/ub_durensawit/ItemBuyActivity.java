@@ -49,7 +49,7 @@ public class ItemBuyActivity extends AppCompatActivity {
         goBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intoTheCart();
+                //intoTheCart();
                 startActivity(new Intent(ItemBuyActivity.this, ListBuyActivity.class));
             }
         });
