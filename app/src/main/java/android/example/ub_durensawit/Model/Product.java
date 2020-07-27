@@ -18,12 +18,45 @@ public class Product {
     @SerializedName("id_satuan")
     private int id_satuan;
 
+    @SerializedName("harga")
+    private int harga;
+
     @SerializedName("kategori_id")
     private int kategori_id;
+
 
     @SerializedName("id_supplier")
     private int id_supplier;
 
+    public int getHarga() {
+        return harga;
+    }
 
+    public int getProduk_id() {
+        return produk_id;
+    }
 
+    public String getDeskripsi_produk() {
+        return deskripsi_produk;
+    }
+
+    public int getKategori_produk_id() {
+        return kategori_produk_id;
+    }
+
+    public String getNama_produk() {
+        return nama_produk;
+    }
+
+    public int getId_satuan() {
+        return id_satuan;
+    }
+
+    public int getKategori_id() {
+        return kategori_id;
+    }
+
+    public int getId_supplier() {
+        return id_supplier;
+    }
 }

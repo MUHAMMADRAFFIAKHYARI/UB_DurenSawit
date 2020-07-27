@@ -142,6 +142,7 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
     @Override
     public void onValidationSucceeded() {
         /*Toast.makeText(this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();*/
+        checkEmail();
 
     }
 
@@ -217,7 +218,6 @@ public class RegisterActivity extends AppCompatActivity implements Validator.Val
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 progress.dismiss();
-                User responseUser = response.body();
                 if (response.body().getValue().equals("1")) {
                     verificationSuccessful(email);
                 } else {

@@ -1,13 +1,19 @@
 package android.example.ub_durensawit.DbConn;
+import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
-   /*
+
+ //For User Class
+ /*
     @GET("retrofit/POST/.php")
     Call<List<User>> getUser();
     */
@@ -26,5 +32,13 @@ public interface ApiInterface {
     @Field("email") String email
     );
 
+//For Product Class
+
+@FormUrlEncoded
+@GET("getProduct.php")
+public Call<Product> getProduct(
+ @Query("id") int id
+
+);
 
 }

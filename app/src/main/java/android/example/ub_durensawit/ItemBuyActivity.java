@@ -2,16 +2,31 @@ package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.example.ub_durensawit.DbConn.ApiClient;
+import android.example.ub_durensawit.DbConn.ApiInterface;
+import android.example.ub_durensawit.Model.Product;
+import android.example.ub_durensawit.Model.User;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ItemBuyActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+public class ItemBuyActivity extends AppCompatActivity {
+    private ApiInterface apiInterface;
+    private ProgressDialog progress;
     TextView quantityItem, prodName, prodCtg, prodPrice, coba, goBuy;
+    String productName, productCategory;
+    SharedPreferences sharedPreferences;
+    int productPrice, productQuantity,productId;
     ImageView prodImage;
     int angka = 1;
     int position;
@@ -22,11 +37,12 @@ public class ItemBuyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_buy);
 
-
+        sharedPreferences = getSharedPreferences("CartItem",MODE_PRIVATE);
         goBuy = findViewById(R.id.goBuy);
         goBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intoTheCart();
                 startActivity(new Intent(ItemBuyActivity.this, ListBuyActivity.class));
             }
         });
@@ -43,6 +59,7 @@ public class ItemBuyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+
             }
         });
 
@@ -50,8 +67,8 @@ public class ItemBuyActivity extends AppCompatActivity {
         Intent i = getIntent();
 
         int productImagePosition  = i.getIntExtra("position image", 0);
-        String productName = i.getStringExtra("product name");
-        String productCategory = i.getStringExtra("product category");
+        productName = i.getStringExtra("product name");
+        productCategory = i.getStringExtra("product category");
         String productPrice = i.getStringExtra("product price");
 
         int positionImage = productImagePosition;
@@ -61,6 +78,48 @@ public class ItemBuyActivity extends AppCompatActivity {
         prodName.setText(productName);
         prodCtg.setText(productCategory);
         prodPrice.setText(productPrice);
+
+    }
+    private void getProduct(int id){
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        progress = new ProgressDialog(this);
+        progress.setCancelable(false);
+        progress.setMessage("Mohon tunggu sebentar");
+        progress.show();
+        Call<Product> call = apiInterface.getProduct(productId);
+        call.enqueue(new Callback<Product>() {
+            @Override
+            public void onResponse(Call<Product> call, Response<Product> response) {
+                progress.dismiss();
+                Product responseProduct = response.body();
+                if (response.isSuccessful() && responseProduct != null) {
+                   // Toast.makeText(VerificationActivity.this,"Pendaftaran berhasil",Toast.LENGTH_LONG).show();
+                    prodName.setText(responseProduct.getNama_produk());
+                    prodCtg.setText(responseProduct.getKategori_id());
+                    prodPrice.setText(responseProduct.getHarga());
+
+                } else {
+                    Toast.makeText(ItemBuyActivity.this,"Gagal Mengambil data",Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Product> call, Throwable t) {
+                progress.dismiss();
+                Toast.makeText(ItemBuyActivity.this,
+                        "Jaringan Bermasalah " + t.getMessage()
+                        , Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void intoTheCart(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("nama", productName);
+        editor.putString("kategori",productCategory);
+        editor.putString("jumlah",quantityItem.getText().toString());
+        editor.putString("harga", String.valueOf(productPrice));
+        editor.commit();
 
     }
 
