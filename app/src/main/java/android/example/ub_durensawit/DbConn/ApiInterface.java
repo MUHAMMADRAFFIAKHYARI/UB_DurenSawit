@@ -1,4 +1,6 @@
 package android.example.ub_durensawit.DbConn;
+import android.example.ub_durensawit.LoginActivity;
+import android.example.ub_durensawit.Model.LoginUser;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 
@@ -33,12 +35,17 @@ public interface ApiInterface {
     );
 
 //For Product Class
+    @FormUrlEncoded
+    @GET("getProduct.php")
+    public Call<Product> getProduct(
+            @Query("id") int id
+    );
 
-@FormUrlEncoded
-@GET("getProduct.php")
-public Call<Product> getProduct(
- @Query("id") int id
-
-);
-
+    //for user login
+    @FormUrlEncoded
+    @POST("login.php")
+    public Call<User> login(
+      @Field("email") String email,
+      @Field("password") String password
+    );
 }
