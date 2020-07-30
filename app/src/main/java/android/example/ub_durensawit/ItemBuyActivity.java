@@ -9,8 +9,8 @@ import android.content.SharedPreferences;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
 import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
-import android.example.ub_durensawit.DbConn.local.CartDataSource;
 import android.example.ub_durensawit.DbConn.local.CartDatabase;
+import android.example.ub_durensawit.Model.Cart;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 import android.os.Bundle;
@@ -28,10 +28,6 @@ public class ItemBuyActivity extends AppCompatActivity {
     private ProgressDialog progress;
     TextView quantityItem, prodName, prodCtg, prodPrice, coba, goBuy;
     String productName, productCategory;
-    SharedPreferences sharedPreferences;
-
-    public static CartDatabase cartDatabase;
-    public static CartRepository cartRepository;
 
     int productPrice, productQuantity,productId;
     ImageView prodImage;
@@ -44,7 +40,6 @@ public class ItemBuyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_buy);
 
-        sharedPreferences = getSharedPreferences("CartItem",MODE_PRIVATE);
         goBuy = findViewById(R.id.goBuy);
         goBuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,11 +83,6 @@ public class ItemBuyActivity extends AppCompatActivity {
 
     }
 
-    private void initDB(){
-        cartDatabase = CartDatabase.getInstance(this);
-        cartRepository = CartRepository.getInstance(CartDataSource.getInstance(cartDatabase.cartDao()));
-
-    }
 
 
     private void getProduct(int id){
@@ -129,12 +119,7 @@ public class ItemBuyActivity extends AppCompatActivity {
     }
 
     private void intoTheCart(){
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("nama", productName);
-        editor.putString("kategori",productCategory);
-        editor.putString("jumlah",quantityItem.getText().toString());
-        editor.putString("harga", String.valueOf(productPrice));
-        editor.commit();
+    Cart cart = new Cart(1,"Indomie",Integer.parseInt(quantityItem.getText().toString()),1,1,"Ya Indomie");
 
     }
 

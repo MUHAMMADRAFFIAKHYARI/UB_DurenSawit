@@ -1,60 +1,100 @@
 package android.example.ub_durensawit.DbConn.DataSource;
 
+import android.app.Application;
+import android.example.ub_durensawit.DbConn.local.CartDao;
+import android.example.ub_durensawit.DbConn.local.CartDatabase;
 import android.example.ub_durensawit.Model.Cart;
+import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Flowable;
 
-public class CartRepository implements ICartDataSource {
-    private ICartDataSource iCartDataSource;
+public class CartRepository {
+    private CartDao mCartDao;
+    private LiveData<List<Cart>> mAllItems;
+
     private static CartRepository instance;
-    public static CartRepository getInstance(ICartDataSource iCartDataSource){
-        if(instance == null){
-            instance = new CartRepository(iCartDataSource);
-
-        }
-        return instance;
-
-    }
-
-    public CartRepository(ICartDataSource iCartDataSource) {
-        this.iCartDataSource = iCartDataSource;
+    public CartRepository(Application application) {
+        CartDatabase db = CartDatabase.getDatabase(application);
+        mCartDao = db.cartDao();
+        mAllItems = mCartDao.getCartItems();
     }
 
 
-    @Override
-    public Flowable<List<Cart>> getCartItems() {
-        return iCartDataSource.getCartItems();
-    }
-
-    @Override
-    public Flowable<List<Cart>> GetCartItemById(int cartItemId) {
+/**
+    public LiveData<List<Cart>> GetCartItemById(int cartItemId) {
         return iCartDataSource.GetCartItemById(cartItemId);
     }
-
-    @Override
     public int countCartItems() {
-        return iCartDataSource.countCartItems();
+    return iCartDataSource.countCartItems();
     }
 
-    @Override
+ **/
+    public LiveData<List<Cart>> getCartItems() {
+    return mAllItems;
+}
+
+
+
     public void emptyCart() {
-    iCartDataSource.emptyCart();
+        new deleteAllItemsAsyncTask(mCartDao).execute();
     }
 
-    @Override
-    public void InsertToCart(Cart... carts) {
-
+    public void  InsertToCart(Cart cart) {
+        new insertAsyncTask(mCartDao).execute(cart);
     }
 
-    @Override
-    public void UpdateCart(Cart... carts) {
-    iCartDataSource.UpdateCart(carts);
-    }
-
-    @Override
     public void deleteCartItem(Cart cart) {
-    iCartDataSource.deleteCartItem(cart);
+        new deleteCartAsyncTask(mCartDao).execute(cart);
+    }
+
+
+    private static class insertAsyncTask extends AsyncTask<Cart, Void, Void> {
+
+        private CartDao mAsyncTaskDao;
+
+        insertAsyncTask(CartDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        protected Void doInBackground(final Cart... params) {
+            mAsyncTaskDao.InsertToCart(params[0]);
+            return null;
+        }
+    }
+
+    /**
+     * Delete all words from the database (does not delete the table)
+     */
+    private static class deleteAllItemsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private CartDao mAsyncTaskDao;
+
+        deleteAllItemsAsyncTask(CartDao dao) {
+            mAsyncTaskDao = dao;
+        }
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.emptyCart();
+            return null;
+        }
+    }
+
+    /**
+     *  Delete a single word from the database.
+     */
+    private static class deleteCartAsyncTask extends AsyncTask<Cart, Void, Void> {
+        private CartDao mAsyncTaskDao;
+
+        deleteCartAsyncTask(CartDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        protected Void doInBackground(final Cart... params) {
+            mAsyncTaskDao.deleteCartItem(params[0]);
+            return null;
+        }
     }
 }
