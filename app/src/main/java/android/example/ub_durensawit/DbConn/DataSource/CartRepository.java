@@ -1,6 +1,7 @@
 package android.example.ub_durensawit.DbConn.DataSource;
 
 import android.app.Application;
+import android.content.Context;
 import android.example.ub_durensawit.DbConn.local.CartDao;
 import android.example.ub_durensawit.DbConn.local.CartDatabase;
 import android.example.ub_durensawit.Model.Cart;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Room;
 
 import java.util.List;
 
@@ -16,13 +18,101 @@ import io.reactivex.rxjava3.core.Flowable;
 public class CartRepository {
     private CartDao mCartDao;
     private LiveData<List<Cart>> mAllItems;
-
+    private CartDatabase cartDatabase;
     private static CartRepository instance;
-    public CartRepository(Application application) {
-        CartDatabase db = CartDatabase.getDatabase(application);
-        mCartDao = db.cartDao();
-        mAllItems = mCartDao.getCartItems();
+    public CartRepository(Context context) {
+        cartDatabase = Room.databaseBuilder(context, CartDatabase.class, "UB_DurenSawit").build();
     }
+
+
+
+
+    public void insertCart(String nama, int jumlah) {
+
+        Cart cart = new Cart();
+        cart.setNama(nama);
+        cart.setJumlah(jumlah);
+
+        insertCart(cart);
+    }
+
+    public void insertCart(final Cart cart) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                cartDatabase.cartDao().InsertToCart(cart);
+                return null;
+            }
+        }.execute();
+    }
+
+    public void updateCart(final Cart cart) {
+
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                cartDatabase.cartDao().UpdateCart(cart);
+                return null;
+            }
+        }.execute();
+    }
+
+    public void deleteCart(final int id) {
+        final LiveData<Cart> cart = getCart(id);
+        if(cart != null) {
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    cartDatabase.cartDao().deleteCartItem(cart.getValue());
+                    return null;
+                }
+            }.execute();
+        }
+    }
+
+    public void deleteCart(final Cart cart) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                cartDatabase.cartDao().deleteCartItem(cart);
+                return null;
+            }
+        }.execute();
+    }
+
+    public void emptyCart(){
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                cartDatabase.cartDao().emptyCart();
+                return null;
+            }
+        }.execute();
+
+    }
+
+    public LiveData<Cart> getCart(int id) {
+        return cartDatabase.cartDao(). GetCartItemById(id);
+    }
+
+    public LiveData<List<Cart>> getCarts() {
+        return cartDatabase.cartDao().getCartItems();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
@@ -34,6 +124,7 @@ public class CartRepository {
     }
 
  **/
+/**
     public LiveData<List<Cart>> getCartItems() {
     return mAllItems;
 }
@@ -67,9 +158,7 @@ public class CartRepository {
         }
     }
 
-    /**
-     * Delete all words from the database (does not delete the table)
-     */
+
     private static class deleteAllItemsAsyncTask extends AsyncTask<Void, Void, Void> {
         private CartDao mAsyncTaskDao;
 
@@ -82,9 +171,7 @@ public class CartRepository {
         }
     }
 
-    /**
-     *  Delete a single word from the database.
-     */
+
     private static class deleteCartAsyncTask extends AsyncTask<Cart, Void, Void> {
         private CartDao mAsyncTaskDao;
 
@@ -97,4 +184,5 @@ public class CartRepository {
             return null;
         }
     }
+    **/
 }

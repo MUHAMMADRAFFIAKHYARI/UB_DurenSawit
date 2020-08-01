@@ -1,5 +1,6 @@
 package android.example.ub_durensawit.Model;
 
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -7,36 +8,38 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Cart")
 public class Cart {
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    @PrimaryKey
     @ColumnInfo(name = "id")
-    public int id;
+    private int id;
 
-    @ColumnInfo(name = "produk_id")
-    public int produk_id;
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    @ColumnInfo(name="nama_produk")
-   public String namaProduk;
+    @ColumnInfo(name = "nama")
+    private String nama;
 
     @ColumnInfo(name = "jumlah")
-    public int jumlah;
+    private int jumlah;
 
-    @ColumnInfo(name = "harga")
-    public int harga;
+    public String getNama() {
+        return nama;
+    }
 
-    @ColumnInfo(name = "kategori_id")
-    public int kategori_id;
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
-    @ColumnInfo(name = "nama_kategori")
-    public String namaKategori;
+    public int getJumlah() {
+        return jumlah;
+    }
 
-    public Cart(int produk_id, String namaProduk, int jumlah, int harga, int kategori_id, String namaKategori) {
-        this.produk_id = produk_id;
-        this.namaProduk = namaProduk;
+    public void setJumlah(int jumlah) {
         this.jumlah = jumlah;
-        this.harga = harga;
-        this.kategori_id = kategori_id;
-        this.namaKategori = namaKategori;
     }
 }

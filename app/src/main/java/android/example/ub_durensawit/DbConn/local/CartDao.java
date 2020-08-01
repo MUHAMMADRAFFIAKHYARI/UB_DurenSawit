@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -16,25 +17,25 @@ import io.reactivex.rxjava3.core.Flowable;
 @Dao
 public interface CartDao {
         @Query("SELECT * FROM Cart")
-        LiveData<List<Cart>> getCartItems();
+        public LiveData<List<Cart>> getCartItems();
 
         @Query("SELECT * FROM Cart Where id =:cartItemId")
-        LiveData<List<Cart>> GetCartItemById(int cartItemId);
+        public LiveData<Cart> GetCartItemById(int cartItemId);
 
         @Query("SELECT COUNT(*) FROM Cart")
-        int countCartItems();
+        public int countCartItems();
 
         @Query("DELETE FROM Cart")
-        void emptyCart();
+        public void emptyCart();
 
-        @Insert
-        void InsertToCart(Cart...carts);
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        public void InsertToCart(Cart carts);
 
         @Update
-        void UpdateCart(Cart...carts);
+        public void UpdateCart(Cart carts);
 
         @Delete
-        void deleteCartItem(Cart cart);
+        public void deleteCartItem(Cart cart);
 
 
 

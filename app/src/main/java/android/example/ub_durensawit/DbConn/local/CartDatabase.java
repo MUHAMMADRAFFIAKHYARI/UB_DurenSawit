@@ -15,19 +15,6 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 public abstract class CartDatabase extends RoomDatabase {
 
 public abstract CartDao cartDao();
-private static CartDatabase instance;
 
-public static CartDatabase getDatabase(Context context){
-    if(instance == null){
-        instance = Room.databaseBuilder(context,CartDatabase.class,"UB_DurenSawit")
-                // Wipes and rebuilds instead of migrating if no Migration object.
-                // Migration is not part of this practical.
-                .fallbackToDestructiveMigration()
-                .allowMainThreadQueries()
-                .build();
-
-    }
-    return instance;
-}
 
 }
