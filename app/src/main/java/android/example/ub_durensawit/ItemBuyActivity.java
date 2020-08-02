@@ -59,7 +59,7 @@ public class ItemBuyActivity extends AppCompatActivity {
         goBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //intoTheCart();
+                intoTheCart();
                 startActivity(new Intent(ItemBuyActivity.this, CartActivity.class));
             }
         });
@@ -128,7 +128,7 @@ public class ItemBuyActivity extends AppCompatActivity {
     private void intoTheCart(){
         CartRepository cartRepository = new CartRepository(getApplicationContext());
         String nama = "Indomie";
-        int jumlah = 5;
+        int jumlah = Integer.parseInt(quantityItem.getText().toString());
         cartRepository.insertCart(nama, jumlah);
     }
 

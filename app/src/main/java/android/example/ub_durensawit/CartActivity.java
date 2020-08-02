@@ -54,10 +54,11 @@ public class CartActivity extends AppCompatActivity {
         toWarn = findViewById(R.id.toWarn);
 
         // Set up the RecyclerView.
-		
+        /**
         final CartListAdapter adapter = new CartListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+         **/
         CartRepository cartRepository = new CartRepository(getApplicationContext());
 
         cartRepository.getCarts().observe(this, new Observer<List<Cart>>() {
@@ -69,7 +70,7 @@ public class CartActivity extends AppCompatActivity {
                     Log.d("CartActivity", "Jumlah : " + cart.getJumlah());
 
                 }
-                adapter.setCarts(carts);
+                //adapter.setCarts(carts);
             }
         });
 

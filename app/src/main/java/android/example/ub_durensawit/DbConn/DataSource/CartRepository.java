@@ -7,9 +7,12 @@ import android.example.ub_durensawit.DbConn.local.CartDatabase;
 import android.example.ub_durensawit.Model.Cart;
 import android.os.AsyncTask;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.List;
 
@@ -21,7 +24,11 @@ public class CartRepository {
     private CartDatabase cartDatabase;
     private static CartRepository instance;
     public CartRepository(Context context) {
-        cartDatabase = Room.databaseBuilder(context, CartDatabase.class, "UB_DurenSawit").build();
+        cartDatabase = Room
+                .databaseBuilder(context, CartDatabase.class, "UB_DurenSawit")
+                .fallbackToDestructiveMigration()
+                .build();
+
     }
 
 
