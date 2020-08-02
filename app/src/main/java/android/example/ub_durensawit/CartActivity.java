@@ -41,14 +41,14 @@ public class CartActivity extends AppCompatActivity {
         nextBuy = findViewById(R.id.buyNext);
         toWarn = findViewById(R.id.toWarn);
 
-        if (emptyCart.getVisibility() == View.VISIBLE){
+       /* if (emptyCart.getVisibility() == View.VISIBLE){
             toWarn.setEnabled(false);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 toWarn.setBackground(getDrawable(R.drawable.btn_rounded_secondary));
             }
         } else {
             toWarn.setEnabled(true);
-        }
+        }*/
 
 
         //hilangin actionBar
