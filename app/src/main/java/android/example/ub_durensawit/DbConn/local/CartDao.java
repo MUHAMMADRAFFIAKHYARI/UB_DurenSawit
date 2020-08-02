@@ -2,8 +2,11 @@ package android.example.ub_durensawit.DbConn.local;
 
 import android.example.ub_durensawit.Model.Cart;
 
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -11,28 +14,28 @@ import java.util.List;
 
 import io.reactivex.rxjava3.core.Flowable;
 
-
+@Dao
 public interface CartDao {
-    @Query("SELECT * FROM Cart")
-    Flowable<List<Cart>> getCartItems();
+        @Query("SELECT * FROM Cart")
+        public LiveData<List<Cart>> getCartItems();
 
-    @Query("SELECT * FROM Cart Where id =:cartItemId")
-    Flowable<List<Cart>> GetCartItemById(int cartItemId);
+        @Query("SELECT * FROM Cart Where id =:cartItemId")
+        public LiveData<Cart> GetCartItemById(int cartItemId);
 
-    @Query("SELECT COUNT(*) FROM Cart")
-    int countCartItems();
+        @Query("SELECT COUNT(*) FROM Cart")
+        public int countCartItems();
 
-    @Query("DELETE FROM Cart")
-    void emptyCart();
+        @Query("DELETE FROM Cart")
+        public void emptyCart();
 
-    @Insert
-    void InsertToCart(Cart...carts);
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        public void InsertToCart(Cart carts);
 
-    @Update
-    void UpdateCart(Cart...carts);
+        @Update
+        public void UpdateCart(Cart carts);
 
-    @Delete
-    void deleteCartItem(Cart cart);
+        @Delete
+        public void deleteCartItem(Cart cart);
 
 
 

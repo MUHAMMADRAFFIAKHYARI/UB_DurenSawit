@@ -11,20 +11,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = Cart.class, version = 1)
+@Database(entities = {Cart.class}, version = 1,exportSchema = false)
 public abstract class CartDatabase extends RoomDatabase {
 
 public abstract CartDao cartDao();
-private static CartDatabase instance;
 
-public static CartDatabase getInstance(Context context){
-    if(instance == null){
-        instance = Room.databaseBuilder(context,CartDatabase.class,"UB_DurenSawit")
-                .allowMainThreadQueries()
-                .build();
-
-    }
-    return instance;
-}
 
 }

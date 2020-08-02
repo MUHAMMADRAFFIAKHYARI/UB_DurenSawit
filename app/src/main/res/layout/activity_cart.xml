@@ -89,6 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/emptyCart"
             android:layout_width="match_parent"
@@ -97,6 +98,8 @@
             android:paddingRight="@dimen/padding_screen"
 
             >
+
+
 
             <Button
                 android:id="@+id/addCart"
