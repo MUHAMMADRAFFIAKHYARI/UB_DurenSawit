@@ -1,6 +1,7 @@
 package android.example.ub_durensawit.DbConn;
 import android.example.ub_durensawit.LoginActivity;
 import android.example.ub_durensawit.Model.LoginUser;
+import android.example.ub_durensawit.Model.Order;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 
@@ -41,6 +42,7 @@ public interface ApiInterface {
             @Query("id") int id
     );
 
+
     //for user login
     @FormUrlEncoded
     @POST("login.php")
@@ -48,4 +50,18 @@ public interface ApiInterface {
       @Field("email") String email,
       @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("addOrder.php")
+    public Call<Order> createOrder(
+            @Field("produk_id") int produk_id,
+            @Field("jumlah") int jumlah,
+            @Field("harga") int harga,
+            @Field("tanggal_order") String tanggal_order,
+            @Field("status") String status
+    );
+
 }
+
+
+

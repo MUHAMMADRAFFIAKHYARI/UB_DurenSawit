@@ -47,6 +47,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.CartVi
         notifyDataSetChanged();
     }
 
+    public List<Cart> getCarts(){
+        return mCarts;
+    }
+
     /**
      * getItemCount() is called many times, and when it is first called,
      * mWords has not been updated (means initially, it's null, and we can't return null).

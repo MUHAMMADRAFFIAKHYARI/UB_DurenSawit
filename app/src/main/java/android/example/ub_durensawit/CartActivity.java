@@ -1,5 +1,6 @@
 package android.example.ub_durensawit;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,12 +28,20 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+
+import com.google.gson.Gson;
+
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class CartActivity extends AppCompatActivity {
 
     Button addCart, toWarn;
+    CartRepository cartRepository;
     ConstraintLayout emptyCart, nextBuy;
+    private List<Cart> allItems;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SuppressLint("ResourceAsColor")
@@ -59,20 +68,7 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
          **/
-        CartRepository cartRepository = new CartRepository(getApplicationContext());
-
-        cartRepository.getCarts().observe(this, new Observer<List<Cart>>() {
-            @Override
-            public void onChanged(@Nullable final List<Cart> carts) {
-                // Update the cached copy of the words in the adapter.
-                for(Cart cart : carts){
-                    Log.d("CartActivity", "Nama : " + cart.getNama());
-                    Log.d("CartActivity", "Jumlah : " + cart.getJumlah());
-
-                }
-                //adapter.setCarts(carts);
-            }
-        });
+        cartRepository = new CartRepository(getApplicationContext());
 
         //tombol ga bisa di klik kalau cart empty
         /*if (emptyCart.getVisibility() == View.VISIBLE){
@@ -90,10 +86,35 @@ public class CartActivity extends AppCompatActivity {
             Window window = getWindow();
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+    }
+
+    private List<Cart> getAllItems(){
+
+
+        cartRepository.getCarts().observe(this, new Observer<List<Cart>>() {
+            @Override
+            public void onChanged(@Nullable List<Cart> carts) {
+                // Update the cached copy of the words in the adapter.
+
+                //adapter.setCarts(carts);
+                setData(carts);
+            }
+        });
+        return allItems;
+
+
+    }
+
+    private void setData(List<Cart> carts){
+        allItems = carts;
+    }
+
+    private void proccessTransaction(){
+
+
     }
 
     public void toWarn(View view) {
