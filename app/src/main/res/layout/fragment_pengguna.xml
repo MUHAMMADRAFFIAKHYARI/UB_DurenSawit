@@ -84,6 +84,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvArea">
 
                 <RelativeLayout
+                    android:id="@+id/toProfile"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">
@@ -113,6 +114,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/toHistory"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">
@@ -142,6 +144,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/toAbout"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">
@@ -171,6 +174,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/toLogOut"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@color/colorWhite">

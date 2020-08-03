@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="@dimen/padding_screen">
+
+        <Button
+            android:id="@+id/acceptLogout"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/button_primary_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_rounded_primary"
+            android:fontFamily="@font/poppins"
+            android:text="Ya"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/intro_description5"
+            app:layout_constraintTop_toBottomOf="@+id/intro_description5" />
+
+        <Button
+            android:id="@+id/denyLogout"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/button_primary_height"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_white_stroke"
+            android:fontFamily="@font/poppins"
+            android:text="Tidak"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGreyDark"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/intro_description5"
+            app:layout_constraintTop_toTopOf="@+id/acceptLogout" />
+
+        <TextView
+            android:id="@+id/intro_description5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_horizontal"
+            android:text="Apakah anda yakin untuk keluar?"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorBlackBright"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlCompat" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

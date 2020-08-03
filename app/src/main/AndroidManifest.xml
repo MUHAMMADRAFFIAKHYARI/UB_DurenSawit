@@ -13,14 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".AboutActivity" />
         <activity android:name=".ItemBuyActivity" />
-        <activity android:name=".AllitemActivity">
-        </activity>
+        <activity android:name=".AllitemActivity" />
         <activity android:name=".VerificationActivity" />
         <activity android:name=".ThanksActivity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".LandingActivity">
-        </activity>
+        <activity android:name=".LandingActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".SplashScreen"
@@ -31,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LoginActivity" />
         <activity android:name=".IntroActivity" />
 

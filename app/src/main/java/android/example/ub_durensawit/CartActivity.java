@@ -74,14 +74,15 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        if (emptyCart.getVisibility() == View.VISIBLE){
+        //tombol ga bisa di klik kalau cart empty
+        /*if (emptyCart.getVisibility() == View.VISIBLE){
             toWarn.setEnabled(false);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 toWarn.setBackground(getDrawable(R.drawable.btn_rounded_secondary));
             }
         } else {
             toWarn.setEnabled(true);
-        }
+        }*/
 
 
         //hilangin actionBar
