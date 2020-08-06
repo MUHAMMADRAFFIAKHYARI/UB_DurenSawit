@@ -22,6 +22,7 @@ import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
 import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
 import android.example.ub_durensawit.Model.Cart;
+import android.example.ub_durensawit.Model.Operation;
 import android.example.ub_durensawit.Model.Order;
 import android.example.ub_durensawit.Model.User;
 import android.graphics.Color;
@@ -188,8 +189,8 @@ public class CartActivity extends AppCompatActivity {
 
  **/
     private int getTotalHarga(){
-        Cart cart = cartRepository.getTotalHarga();
-        return cart.getTotal_harga();
+        Operation op = cartRepository.getTotalHarga();
+        return op.getTotal_harga();
 
     }
 

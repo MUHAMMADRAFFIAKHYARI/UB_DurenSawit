@@ -5,6 +5,7 @@ import android.content.Context;
 import android.example.ub_durensawit.DbConn.local.CartDao;
 import android.example.ub_durensawit.DbConn.local.CartDatabase;
 import android.example.ub_durensawit.Model.Cart;
+import android.example.ub_durensawit.Model.Operation;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
@@ -95,13 +96,17 @@ public class CartRepository {
         }.execute();
 
     }
+    public int countItems(){
+
+        return cartDatabase.cartDao().countCartItems();
+    }
 
     public LiveData<Cart> getCart(int id) {
         return cartDatabase.cartDao(). GetCartItemById(id);
     }
 
-    public Cart getTotalHarga() {
-        return cartDatabase.cartDao().getTotalHarga();
+    public Operation getTotalHarga() {
+        return cartDatabase.cartDao().getTotal_Harga();
     }
 
     public LiveData<List<Cart>> getCarts() {

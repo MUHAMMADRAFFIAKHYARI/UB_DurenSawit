@@ -1,6 +1,7 @@
 package android.example.ub_durensawit.DbConn.local;
 
 import android.example.ub_durensawit.Model.Cart;
+import android.example.ub_durensawit.Model.Operation;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -38,7 +39,7 @@ public interface CartDao {
         public void deleteCartItem(Cart cart);
 
         @Query("SELECT SUM(harga) as total_harga FROM Cart")
-        public Cart getTotalHarga();
+        public Operation getTotal_Harga();
 
 
 
