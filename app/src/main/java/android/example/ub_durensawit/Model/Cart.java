@@ -8,32 +8,41 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Cart")
 public class Cart {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "id")
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @ColumnInfo(name = "nama")
-    private String nama;
+    @ColumnInfo(name = "produk_id")
+    private int produk_id;
 
     @ColumnInfo(name = "jumlah")
     private int jumlah;
+    @ColumnInfo(name = "nama")
+    private String nama;
 
-    public String getNama() {
+    @ColumnInfo(name = "harga")
+    private int harga;
+
+    private int total_harga;
+
+    public Cart(int produk_id,String nama,int jumlah,int harga) {
+        this.produk_id = produk_id;
+        this.nama = nama;
+        this.jumlah = jumlah;
+        this.harga = harga;
+    }
+
+    public Cart(){
+
+    }
+
+    public int getProduk_id() {
+        return produk_id;
+    }
+
+    public String getNama(){
         return nama;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
+
 
     public int getJumlah() {
         return jumlah;
@@ -41,5 +50,14 @@ public class Cart {
 
     public void setJumlah(int jumlah) {
         this.jumlah = jumlah;
+    }
+
+    public int getTotal_harga(){ return total_harga; }
+
+    public int get_Harga(){
+        return harga;
+    }
+    public void setHarga(int harga){
+        this.harga = harga;
     }
 }

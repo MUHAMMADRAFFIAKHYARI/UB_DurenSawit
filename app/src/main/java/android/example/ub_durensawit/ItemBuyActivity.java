@@ -103,7 +103,7 @@ public class ItemBuyActivity extends AppCompatActivity {
 
 
 
-    private void getProduct(int id){
+    private void getProduct(int produk_id){
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         progress = new ProgressDialog(this);
         progress.setCancelable(false);
@@ -138,9 +138,12 @@ public class ItemBuyActivity extends AppCompatActivity {
 
     private void intoTheCart(){
         CartRepository cartRepository = new CartRepository(getApplicationContext());
-        String nama = "Indomie";
+       //Sementara
+        String nama= "Indomie";
+        int harga = 1000;
+        int produk_id = 1;
         int jumlah = Integer.parseInt(quantityItem.getText().toString());
-        cartRepository.insertCart(nama, jumlah);
+        cartRepository.insertCart(produk_id,nama,jumlah,harga);
     }
 
 

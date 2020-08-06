@@ -14,10 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Observable;
 import android.example.ub_durensawit.Adapter.CartListAdapter;
+import android.example.ub_durensawit.DbConn.ApiClient;
+import android.example.ub_durensawit.DbConn.ApiInterface;
 import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
 import android.example.ub_durensawit.Model.Cart;
+import android.example.ub_durensawit.Model.Order;
+import android.example.ub_durensawit.Model.User;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -27,14 +33,26 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -42,6 +60,9 @@ public class CartActivity extends AppCompatActivity {
     CartRepository cartRepository;
     ConstraintLayout emptyCart, nextBuy;
     private List<Cart> allItems;
+    ProgressDialog progress;
+
+    ApiInterface apiInterface;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SuppressLint("ResourceAsColor")
@@ -108,12 +129,67 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
+    private Date getcurrentDate() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        return cal.getTime();
+    }
+
+
     private void setData(List<Cart> carts){
         allItems = carts;
     }
-
+/**
     private void proccessTransaction(){
+        JSONArray json = new JSONArray();
+        for (int i = 0; i < allItems.size(); i++) {
+            JSONObject row = new JSONObject();
+            try {
+                row.put("Nama", allItems.get(i).getNama());
+                row.put("Nama", allItems.get(i).getNama());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            json.put(row);
+        }
 
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        progress = new ProgressDialog(this);
+        progress.setCancelable(false);
+        progress.setMessage("Sedang memproses transaksi");
+        progress.show();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String currentDate = date.format(getCurrentDate());
+        Call<User> call = apiInterface.createOrder(currentDate,user_id,"Proses");
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                progress.dismiss();
+                User responseUser = response.body();
+                if (response.isSuccessful() && responseUser != null) {
+                    Toast.makeText(CartActivity.this,"Pendaftaran berhasil",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(CartActivity.this, LandingActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(VerificationActivity.this,"Data gagal ditambahkan",Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                progress.dismiss();
+                Toast.makeText(VerificationActivity.this,
+                        "Jaringan Bermasalah " + t.getMessage()
+                        , Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+ **/
+    private int getTotalHarga(){
+        Cart cart = cartRepository.getTotalHarga();
+        return cart.getTotal_harga();
 
     }
 
