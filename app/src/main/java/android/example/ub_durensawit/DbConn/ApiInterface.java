@@ -3,6 +3,8 @@ import android.example.ub_durensawit.Model.Order;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 
+import org.json.JSONStringer;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -13,7 +15,7 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
- //For User Class
+    //For User Class
  /*
     @GET("retrofit/POST/.php")
     Call<List<User>> getUser();
@@ -52,11 +54,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("addOrder.php")
     public Call<Order> createOrder(
-            @Field("produk_id") int produk_id,
-            @Field("jumlah") int jumlah,
-            @Field("harga") int harga,
             @Field("tanggal_order") String tanggal_order,
+            @Field("user_id") int user_id,
             @Field("status") String status
+
     );
 
 }

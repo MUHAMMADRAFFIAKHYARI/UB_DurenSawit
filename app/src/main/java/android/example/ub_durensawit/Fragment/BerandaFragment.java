@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.example.ub_durensawit.Adapter.MainRecyclerAdapter;
 import android.example.ub_durensawit.AllitemActivity;
 import android.example.ub_durensawit.CartActivity;
+import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
 import android.example.ub_durensawit.Model.AllCategory;
 import android.example.ub_durensawit.Model.CategoryItem;
 import android.example.ub_durensawit.R;
@@ -21,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nex3z.notificationbadge.NotificationBadge;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +32,21 @@ public class BerandaFragment extends Fragment {
 
     private ImageView cartList;
     private Button toAllitem;
+    private NotificationBadge badge;
+    private CartRepository cartRepository;
     RecyclerView mainCategoryRecycler;
     MainRecyclerAdapter mainRecyclerAdapter;
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container,false);
-
+        cartRepository = new CartRepository(getActivity().getApplicationContext());
         cartList = view.findViewById(R.id.toCart);
         toAllitem = view.findViewById(R.id.toAllitem);
+        badge =(NotificationBadge)view.findViewById(R.id.badge);
 
         mainCategoryRecycler = view.findViewById(R.id.main_recycler);
 
@@ -90,6 +97,28 @@ public class BerandaFragment extends Fragment {
 
 
         return view;
+    }
+
+    private void updateCartCount(){
+       /**
+        if(badge==null) return;
+        new Thread(){
+            public void run(){
+                try{
+                    runOnUiThread(new Runnable(){
+                        @Override
+                        public void run() {
+                            if(cartRepository.CountItems()){
+
+                            }
+                        }
+                    });
+
+                }
+            }
+        }.start();
+        **/
+
     }
 
     private void setMainCategoryRecycler(List<AllCategory> allCategoryList){

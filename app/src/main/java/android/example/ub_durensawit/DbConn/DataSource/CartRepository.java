@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -34,11 +35,9 @@ public class CartRepository {
 
 
 
-    public void insertCart(String nama, int jumlah) {
+    public void insertCart(int produk_id,String nama, int jumlah,int harga) {
 
-        Cart cart = new Cart();
-        cart.setNama(nama);
-        cart.setJumlah(jumlah);
+        Cart cart = new Cart(produk_id,nama,jumlah,harga);
 
         insertCart(cart);
     }
@@ -54,8 +53,6 @@ public class CartRepository {
     }
 
     public void updateCart(final Cart cart) {
-
-
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
@@ -101,6 +98,10 @@ public class CartRepository {
 
     public LiveData<Cart> getCart(int id) {
         return cartDatabase.cartDao(). GetCartItemById(id);
+    }
+
+    public Cart getTotalHarga() {
+        return cartDatabase.cartDao().getTotalHarga();
     }
 
     public LiveData<List<Cart>> getCarts() {

@@ -19,8 +19,8 @@ public interface CartDao {
         @Query("SELECT * FROM Cart")
         public LiveData<List<Cart>> getCartItems();
 
-        @Query("SELECT * FROM Cart Where id =:cartItemId")
-        public LiveData<Cart> GetCartItemById(int cartItemId);
+        @Query("SELECT * FROM Cart Where Produk_Id =:produk_id")
+        public LiveData<Cart> GetCartItemById(int produk_id);
 
         @Query("SELECT COUNT(*) FROM Cart")
         public int countCartItems();
@@ -36,6 +36,9 @@ public interface CartDao {
 
         @Delete
         public void deleteCartItem(Cart cart);
+
+        @Query("SELECT SUM(harga) as total_harga FROM Cart")
+        public Cart getTotalHarga();
 
 
 
