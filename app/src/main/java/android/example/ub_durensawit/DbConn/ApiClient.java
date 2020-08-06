@@ -40,4 +40,10 @@ public class ApiClient {
         return retrofit;
     }
 
+    public static ApiInterface getApiInterface(){
+        ApiInterface apiInterface = getApiClient().create(ApiInterface.class);
+
+        return apiInterface;
+    }
+
 }

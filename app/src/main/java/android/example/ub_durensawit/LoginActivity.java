@@ -2,15 +2,14 @@ package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
-import android.example.ub_durensawit.Model.LoginUser;
+import android.example.ub_durensawit.Model.LoginResponse;
 import android.example.ub_durensawit.Model.User;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
@@ -19,14 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
-
-import java.io.StringReader;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,12 +49,13 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+            login();
             }
         });
     }
 
     private void login(){
+
         final String email=etEmail.getText().toString().trim();
         final String password=etPassword.getText().toString().trim();
 
@@ -90,7 +85,14 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-
+                User user = response.body();
+                if(response.isSuccessful()){
+                    Toast.makeText(LoginActivity.this, "Masuk Berhasil", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this,LandingActivity.class));
+                    finish();
+                }else{
+                    Toast.makeText(LoginActivity.this, "Password atau Email Salah", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -98,11 +100,30 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-
-        Intent toLanding = new Intent(LoginActivity.this, LandingActivity.class);
-        startActivity(toLanding);
-        finish();
+//        User userRequest = new User();
+//        userRequest.setEmail(etEmail.getText().toString());
+//        userRequest.setPassword(etPassword.getText().toString());
+//
+//        Call<User> userCall= ApiClient.getApiInterface().login(userRequest);
+//        userCall.enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                Toast.makeText(LoginActivity.this, "Berhasil Masuk", Toast.LENGTH_SHORT).show();
+//                User userResponse = response.body();
+//
+////                new Handler().postDelayed(new Runnable() {
+////                    @Override
+////                    public void run() {
+////                        startActivity(new Intent(LoginActivity.this,LandingActivity.class).putExtra("data",userResponse.getEmail()));
+////                    }
+////                });
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//
+//            }
+//        });
     }
 
     public void daftarText(View view) {

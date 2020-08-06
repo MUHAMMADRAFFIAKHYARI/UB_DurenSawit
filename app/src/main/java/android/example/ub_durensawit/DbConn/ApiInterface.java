@@ -1,16 +1,14 @@
 package android.example.ub_durensawit.DbConn;
-import android.example.ub_durensawit.LoginActivity;
-import android.example.ub_durensawit.Model.LoginUser;
 import android.example.ub_durensawit.Model.Order;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -47,8 +45,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("login.php")
     public Call<User> login(
-      @Field("email") String email,
-      @Field("password") String password
+            @Field("email") String email,
+            @Field("password")String password
     );
 
     @FormUrlEncoded
