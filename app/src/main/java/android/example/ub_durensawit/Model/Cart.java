@@ -30,19 +30,13 @@ public class Cart {
         this.harga = harga;
     }
 
-    public Cart(){
-
-    }
-
     public int getProduk_id() {
         return produk_id;
     }
 
-    public String getNama(){
-        return nama;
+    public void setProduk_id(int produk_id) {
+        this.produk_id = produk_id;
     }
-
-
 
     public int getJumlah() {
         return jumlah;
@@ -52,12 +46,27 @@ public class Cart {
         this.jumlah = jumlah;
     }
 
-    public int getTotal_harga(){ return total_harga; }
+    public String getNama() {
+        return nama;
+    }
 
-    public int get_Harga(){
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public int getHarga() {
         return harga;
     }
-    public void setHarga(int harga){
+
+    public void setHarga(int harga) {
         this.harga = harga;
+    }
+
+    public int getTotal_harga() {
+        return total_harga;
+    }
+
+    public void setTotal_harga(int total_harga) {
+        this.total_harga = total_harga;
     }
 }

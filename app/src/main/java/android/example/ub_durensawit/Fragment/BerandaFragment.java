@@ -1,5 +1,6 @@
 package android.example.ub_durensawit.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import android.example.ub_durensawit.Adapter.MainRecyclerAdapter;
@@ -36,6 +37,7 @@ public class BerandaFragment extends Fragment {
     private CartRepository cartRepository;
     RecyclerView mainCategoryRecycler;
     MainRecyclerAdapter mainRecyclerAdapter;
+    Activity currentActivity;
 
 
 
@@ -43,7 +45,9 @@ public class BerandaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container,false);
-        cartRepository = new CartRepository(getActivity().getApplicationContext());
+
+        currentActivity = getActivity();
+        cartRepository = new CartRepository(currentActivity.getApplicationContext());
         cartList = view.findViewById(R.id.toCart);
         toAllitem = view.findViewById(R.id.toAllitem);
         badge =(NotificationBadge)view.findViewById(R.id.badge);
@@ -100,24 +104,30 @@ public class BerandaFragment extends Fragment {
     }
 
     private void updateCartCount(){
-       /**
+
         if(badge==null) return;
         new Thread(){
             public void run(){
                 try{
-                    runOnUiThread(new Runnable(){
+                    currentActivity.runOnUiThread(new Runnable(){
                         @Override
                         public void run() {
-                            if(cartRepository.CountItems()){
-
+                            int countItems = cartRepository.countItems();
+                            if( countItems == 0){
+                            badge.setVisibility(getView().INVISIBLE);
+                            } else{
+                                badge.setVisibility(getView().VISIBLE);
+                                badge.setText(String.valueOf(countItems));
                             }
                         }
                     });
 
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }.start();
-        **/
+
 
     }
 
