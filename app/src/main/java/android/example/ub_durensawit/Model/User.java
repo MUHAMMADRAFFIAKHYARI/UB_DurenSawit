@@ -38,6 +38,18 @@ public class User {
     @Expose
     private String message;
 
+    @SerializedName("success")
+    @Expose
+    private boolean success;
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
     public String getNama() {
         return nama;
     }

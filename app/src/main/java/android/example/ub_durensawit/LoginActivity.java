@@ -82,16 +82,22 @@ public class LoginActivity extends AppCompatActivity {
 
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<User> call = apiInterface.login(email,password);
+
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                User user = response.body();
-                if(response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Masuk Berhasil", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this,LandingActivity.class));
-                    finish();
-                }else{
-                    Toast.makeText(LoginActivity.this, "Password atau Email Salah", Toast.LENGTH_SHORT).show();
+                if(response.body()!=null){
+                   User user = response.body();
+                   if(user.isSuccess()){
+                       Toast.makeText(LoginActivity.this, "Selamat Datang di UB DurenSawit",
+                               Toast.LENGTH_SHORT).show();
+                       startActivity(new Intent(LoginActivity.this,
+                               LandingActivity.class));
+                       finish();
+                   } else{
+                       Toast.makeText(LoginActivity.this,
+                               "Login Gagal "+user.getMessage(), Toast.LENGTH_SHORT).show();
+                   }
                 }
             }
 
@@ -100,30 +106,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-//        User userRequest = new User();
-//        userRequest.setEmail(etEmail.getText().toString());
-//        userRequest.setPassword(etPassword.getText().toString());
-//
-//        Call<User> userCall= ApiClient.getApiInterface().login(userRequest);
-//        userCall.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                Toast.makeText(LoginActivity.this, "Berhasil Masuk", Toast.LENGTH_SHORT).show();
-//                User userResponse = response.body();
-//
-////                new Handler().postDelayed(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        startActivity(new Intent(LoginActivity.this,LandingActivity.class).putExtra("data",userResponse.getEmail()));
-////                    }
-////                });
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        });
     }
 
     public void daftarText(View view) {
