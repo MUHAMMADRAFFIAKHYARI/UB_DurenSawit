@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.example.ub_durensawit.ItemBuyActivity;
 import android.example.ub_durensawit.Model.AllCategory;
 import android.example.ub_durensawit.Model.CategoryItem;
+import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.R;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull MainRecyclerAdapter.MainViewHolder holder, int position) {
         holder.categoryTitle.setText(allCategoryList.get(position).getCategoryTitle());
-        setCatItemRecycler(holder.itemRecycler, allCategoryList.get(position).getCategoryItemList());
+        setCatItemRecycler(holder.itemRecycler, allCategoryList.get(position).getProductList());
     }
 
     @Override
@@ -61,9 +62,9 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     }
 
 
-    private void setCatItemRecycler(RecyclerView recyclerView, List<CategoryItem> categoryItemList){
+    private void setCatItemRecycler(RecyclerView recyclerView, List<Product> ProductList){
 
-        CategoryItemRecyclerAdapter itemRecyclerAdapter = new CategoryItemRecyclerAdapter(context, categoryItemList);
+        CategoryItemRecyclerAdapter itemRecyclerAdapter = new CategoryItemRecyclerAdapter(context, ProductList);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         recyclerView.setAdapter(itemRecyclerAdapter);
 

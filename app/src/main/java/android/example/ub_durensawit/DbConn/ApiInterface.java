@@ -5,6 +5,8 @@ import android.example.ub_durensawit.Model.User;
 
 import org.json.JSONStringer;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -41,6 +43,12 @@ public interface ApiInterface {
     public Call<Product> getProduct(
             @Query("id") int id
     );
+
+    @GET("getAllProducts.php")
+    public Call<List<Product>> getAllProducts();
+
+    
+
 
 
     //for user login

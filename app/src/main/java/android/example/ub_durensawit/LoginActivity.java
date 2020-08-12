@@ -50,6 +50,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             login();
+			
+			//Kalo mau debugging
+			/**
+                startActivity(new Intent(LoginActivity.this,
+                        LandingActivity.class));
+                finish();
+				**/
             }
         });
     }

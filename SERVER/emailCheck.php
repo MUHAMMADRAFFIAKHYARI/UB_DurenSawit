@@ -22,6 +22,7 @@
     $response = array("value" => "0",
                      "message" => "email kosong");
 	echo json_encode($response);
+	mysqli_close($conn);
 	  
   }
 ?>

@@ -32,7 +32,7 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
-
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "io.reactivex.rxjava3:rxjava:3.0.0"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

@@ -1,5 +1,7 @@
 package android.example.ub_durensawit.Model;
 
+import android.media.Image;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Product {
@@ -27,6 +29,8 @@ public class Product {
 
     @SerializedName("id_supplier")
     private int id_supplier;
+
+    private String ImageUrl;
 
     public int getHarga() {
         return harga;
@@ -58,5 +62,10 @@ public class Product {
 
     public int getId_supplier() {
         return id_supplier;
+    }
+
+    public String getImageUrl(){
+        ImageUrl="https://budiganteng.000webhostapp.com/product/"+Integer.toString(getProduk_id())+".png";
+        return ImageUrl;
     }
 }

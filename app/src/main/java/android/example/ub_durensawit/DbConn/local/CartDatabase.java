@@ -11,7 +11,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {Cart.class}, version = 1,exportSchema = false)
+@Database(entities = {Cart.class}, version = 2,exportSchema = false)
 public abstract class CartDatabase extends RoomDatabase {
 
 public abstract CartDao cartDao();
