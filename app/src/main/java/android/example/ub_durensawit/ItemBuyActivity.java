@@ -1,8 +1,10 @@
 package android.example.ub_durensawit;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import android.app.Activity;
 import android.app.Application;
@@ -19,6 +21,7 @@ import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -26,6 +29,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,8 +44,8 @@ public class ItemBuyActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
     private ProgressDialog progress;
     TextView quantityItem, prodName, prodCtg, prodPrice, coba, goBuy;
-    String productName, productCategory;
-    int productPrice, productQuantity,productId;
+    String productName, productCategory, productPrice;
+    int  productQuantity,productId;
     ImageView prodImage;
     int angka = 1;
     Context context;
@@ -86,17 +95,45 @@ public class ItemBuyActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        int productImagePosition  = i.getIntExtra("position image", 0);
-        productName = i.getStringExtra("product name");
+        int idProduk  = i.getIntExtra("idProduk", 0);
+        productName = i.getStringExtra("namaProduk");
+        productPrice = i.getStringExtra("hargaProduk");
+
+       /**
         productCategory = i.getStringExtra("product category");
         String productPrice = i.getStringExtra("product price");
 
+
         int positionImage = productImagePosition;
+        **/
 
 //        prodImage.setImageResource(imageProduct[positionImage]);
 //        coba.setText(imageProduct[positionImage]);
+        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(this);
+        circularProgressDrawable.setStrokeWidth(5f);
+        circularProgressDrawable.setCenterRadius(30f);
+        circularProgressDrawable.start();
+
+        Glide.with(ItemBuyActivity.this)
+                .load("https://budiganteng.000webhostapp.com/product/"+Integer.toString(idProduk)+".png")
+                .placeholder(circularProgressDrawable)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        //circularProgressDrawable.stop();
+                        return false;
+                    }
+                })
+                .into(prodImage);
+
+
         prodName.setText(productName);
-        prodCtg.setText(productCategory);
+        prodCtg.setText("Rahasia");
         prodPrice.setText(productPrice);
 
     }
