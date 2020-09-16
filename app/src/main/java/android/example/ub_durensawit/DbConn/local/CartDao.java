@@ -11,6 +11,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Flowable;
@@ -39,7 +40,7 @@ public interface CartDao {
         public void deleteCartItem(Cart cart);
 
         @Query("SELECT SUM(harga) as total_harga FROM Cart")
-        public Operation getTotal_Harga();
+        public LiveData<BigDecimal> getTotal_Harga();
 
 
 

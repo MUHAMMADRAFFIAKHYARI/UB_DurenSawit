@@ -16,9 +16,12 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.CartVi
     private final LayoutInflater mInflater;
     private List<Cart> mCarts; // Cached copy of words
     private static ClickListener clickListener;
+    private Context context;
 
-   public CartListAdapter(Context context) {
+   public CartListAdapter(Context context, List<Cart> carts) {
         mInflater = LayoutInflater.from(context);
+        this.context = context;
+        this.mCarts = carts;
     }
 
     @Override

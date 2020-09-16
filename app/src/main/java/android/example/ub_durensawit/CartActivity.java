@@ -18,6 +18,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Observable;
 import android.example.ub_durensawit.Adapter.CartListAdapter;
+import android.example.ub_durensawit.Adapter.MainRecyclerAdapter;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
 import android.example.ub_durensawit.DbConn.DataSource.CartRepository;
@@ -34,6 +35,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -58,8 +61,12 @@ import retrofit2.Response;
 public class CartActivity extends AppCompatActivity {
 
     Button addCart, toWarn;
+    private ImageView cartEmptyImage;
+    private TextView emptyTitle,emptyDescription;
     CartRepository cartRepository;
-    ConstraintLayout emptyCart, nextBuy;
+    private CartListAdapter cartListAdapter;
+    private RecyclerView itemRecycler;
+    ConstraintLayout  nextBuy;
     private List<Cart> allItems;
     ProgressDialog progress;
 
@@ -79,8 +86,12 @@ public class CartActivity extends AppCompatActivity {
 
             }
         });
+        cartEmptyImage = findViewById(R.id.imageCartEmpty);
+        emptyTitle = findViewById(R.id.empty_title);
+        emptyDescription = findViewById(R.id.empty_description);
+        itemRecycler =findViewById(R.id.item_recycler);
 
-        emptyCart = findViewById(R.id.emptyCart);
+
         nextBuy = findViewById(R.id.buyNext);
         toWarn = findViewById(R.id.toWarn);
 
@@ -90,17 +101,11 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
          **/
-        cartRepository = new CartRepository(getApplicationContext());
+        allItems = new ArrayList<>();
+        cartRepository = new CartRepository(this);
+        fetchAllItems();
 
-        //tombol ga bisa di klik kalau cart empty
-        /*if (emptyCart.getVisibility() == View.VISIBLE){
-            toWarn.setEnabled(false);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                toWarn.setBackground(getDrawable(R.drawable.btn_rounded_secondary));
-            }
-        } else {
-            toWarn.setEnabled(true);
-        }*/
+
 
 
         //hilangin actionBar
@@ -113,22 +118,38 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 
-    private List<Cart> getAllItems(){
+   private void fetchAllItems(){
+       cartRepository.getCarts().observe(this, new Observer<List<Cart>>() {
+           @Override
+           public void onChanged(@Nullable List<Cart> carts) {
+               if (carts.size() > 0){
+                   itemRecycler.setVisibility(View.VISIBLE);
+
+                   RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CartActivity.this);
+                   itemRecycler.setLayoutManager(layoutManager);
+                   cartListAdapter = new CartListAdapter(CartActivity.this, carts);
+                   itemRecycler.setAdapter(cartListAdapter);
+                   itemRecycler.setHasFixedSize(true);
 
 
-        cartRepository.getCarts().observe(this, new Observer<List<Cart>>() {
-            @Override
-            public void onChanged(@Nullable List<Cart> carts) {
-                // Update the cached copy of the words in the adapter.
-
-                //adapter.setCarts(carts);
-                setData(carts);
-            }
-        });
-        return allItems;
-
-
-    }
+                   toWarn.setEnabled(true);
+                   cartEmptyImage.setVisibility(View.GONE);
+                   emptyTitle.setVisibility(View.GONE);
+                   emptyDescription.setVisibility(View.GONE);
+                   addCart.setVisibility(View.GONE);
+               } else {
+                   toWarn.setEnabled(false);
+                   cartEmptyImage.setVisibility(View.VISIBLE);
+                   emptyTitle.setVisibility(View.VISIBLE);
+                   emptyDescription.setVisibility(View.VISIBLE);
+                   addCart.setVisibility(View.VISIBLE);
+                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                       toWarn.setBackground(getDrawable(R.drawable.btn_rounded_secondary));
+                   }
+               }
+           }
+       });
+   }
 
     private Date getcurrentDate() {
         final Calendar cal = Calendar.getInstance();
@@ -140,54 +161,7 @@ public class CartActivity extends AppCompatActivity {
     private void setData(List<Cart> carts){
         allItems = carts;
     }
-/**
-    private void proccessTransaction(){
-        JSONArray json = new JSONArray();
-        for (int i = 0; i < allItems.size(); i++) {
-            JSONObject row = new JSONObject();
-            try {
-                row.put("Nama", allItems.get(i).getNama());
-                row.put("Nama", allItems.get(i).getNama());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            json.put(row);
-        }
 
-        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        progress = new ProgressDialog(this);
-        progress.setCancelable(false);
-        progress.setMessage("Sedang memproses transaksi");
-        progress.show();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        String currentDate = date.format(getCurrentDate());
-        Call<User> call = apiInterface.createOrder(currentDate,user_id,"Proses");
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                progress.dismiss();
-                User responseUser = response.body();
-                if (response.isSuccessful() && responseUser != null) {
-                    Toast.makeText(CartActivity.this,"Pendaftaran berhasil",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(CartActivity.this, LandingActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(VerificationActivity.this,"Data gagal ditambahkan",Toast.LENGTH_LONG);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                progress.dismiss();
-                Toast.makeText(VerificationActivity.this,
-                        "Jaringan Bermasalah " + t.getMessage()
-                        , Toast.LENGTH_LONG).show();
-            }
-        });
-
-    }
-
- **/
     private int getTotalHarga(){
         Operation op = cartRepository.getTotalHarga();
         return op.getTotal_harga();

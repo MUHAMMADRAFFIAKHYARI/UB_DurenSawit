@@ -67,7 +67,7 @@ public class BerandaFragment extends Fragment {
         fetchAllProducts();
 
         currentActivity = getActivity();
-        cartRepository = new CartRepository(currentActivity.getApplicationContext());
+        cartRepository = new CartRepository(currentActivity);
 
         cartList = view.findViewById(R.id.toCart);
         toAllitem = view.findViewById(R.id.toAllitem);

@@ -16,6 +16,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Flowable;
@@ -105,7 +106,7 @@ public class CartRepository {
         return cartDatabase.cartDao(). GetCartItemById(id);
     }
 
-    public Operation getTotalHarga() {
+    public LiveData<BigDecimal> getTotalHarga() {
         return cartDatabase.cartDao().getTotal_Harga();
     }
 
