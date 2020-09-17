@@ -46,6 +46,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -62,7 +63,7 @@ public class CartActivity extends AppCompatActivity {
 
     Button addCart, toWarn;
     private ImageView cartEmptyImage;
-    private TextView emptyTitle,emptyDescription;
+    private TextView emptyTitle,emptyDescription,totalHarga;
     CartRepository cartRepository;
     private CartListAdapter cartListAdapter;
     private RecyclerView itemRecycler;
@@ -91,6 +92,9 @@ public class CartActivity extends AppCompatActivity {
         emptyDescription = findViewById(R.id.empty_description);
         itemRecycler =findViewById(R.id.item_recycler);
 
+        totalHarga = findViewById(R.id.totalHarga);
+
+
 
         nextBuy = findViewById(R.id.buyNext);
         toWarn = findViewById(R.id.toWarn);
@@ -103,7 +107,7 @@ public class CartActivity extends AppCompatActivity {
          **/
         allItems = new ArrayList<>();
         cartRepository = new CartRepository(this);
-        fetchAllItems();
+        fetchAllItems(0);
 
 
 
@@ -118,11 +122,20 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 
-   private void fetchAllItems(){
+   private void fetchAllItems(int indicator){
+       /**
+        * Jenis Indikator :
+        * 1 : buat ngirim data ke database
+        * 0 : buat nampilin di recycler view
+        */
+
+       //take the list of item
        cartRepository.getCarts().observe(this, new Observer<List<Cart>>() {
            @Override
            public void onChanged(@Nullable List<Cart> carts) {
+
                if (carts.size() > 0){
+
                    itemRecycler.setVisibility(View.VISIBLE);
 
                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CartActivity.this);
@@ -149,6 +162,15 @@ public class CartActivity extends AppCompatActivity {
                }
            }
        });
+
+    //take the total price
+       cartRepository.getTotalHarga().observe(this, new Observer<Double>() {
+           @Override
+           public void onChanged(Double result) {
+               totalHarga.setText(result.toString());
+           }
+
+       });
    }
 
     private Date getcurrentDate() {
@@ -159,14 +181,9 @@ public class CartActivity extends AppCompatActivity {
 
 
     private void setData(List<Cart> carts){
-        allItems = carts;
+        this.allItems = carts;
     }
 
-    private int getTotalHarga(){
-        Operation op = cartRepository.getTotalHarga();
-        return op.getTotal_harga();
-
-    }
 
     public void toWarn(View view) {
         final Dialog dialog = new Dialog(this);
@@ -191,6 +208,10 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void EmptyCart(){
+        cartRepository.emptyCart();
     }
 
 }

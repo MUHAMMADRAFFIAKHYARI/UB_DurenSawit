@@ -74,7 +74,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView16" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/totalHarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
@@ -94,7 +94,7 @@
             android:textColor="@color/colorGreyDark"
             android:textSize="20sp"
             app:fontFamily="@font/poppins_bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintBottom_toTopOf="@+id/totalHarga"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

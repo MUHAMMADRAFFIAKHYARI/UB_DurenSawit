@@ -139,7 +139,7 @@ public class ItemBuyActivity extends AppCompatActivity {
     }
 
 
-
+/**
     private void getProduct(int produk_id){
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         progress = new ProgressDialog(this);
@@ -173,14 +173,15 @@ public class ItemBuyActivity extends AppCompatActivity {
         });
     }
 
+ **/
+
     private void intoTheCart(){
         CartRepository cartRepository = new CartRepository(getApplicationContext());
        //Sementara
-        String nama= "Indomie";
-        int harga = 1000;
-        int produk_id = 1;
+        String nama= prodName.getText().toString();
+        int harga = Integer.parseInt(prodPrice.getText().toString());
         int jumlah = Integer.parseInt(quantityItem.getText().toString());
-        cartRepository.insertCart(produk_id,nama,jumlah,harga);
+        cartRepository.insertCart(productId,nama,jumlah,harga);
     }
 
 

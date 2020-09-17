@@ -13,8 +13,10 @@ public class Cart {
     @ColumnInfo(name = "produk_id")
     private int produk_id;
 
+
     @ColumnInfo(name = "jumlah")
     private int jumlah;
+
     @ColumnInfo(name = "nama")
     private String nama;
 

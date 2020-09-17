@@ -106,7 +106,7 @@ public class CartRepository {
         return cartDatabase.cartDao(). GetCartItemById(id);
     }
 
-    public LiveData<BigDecimal> getTotalHarga() {
+    public LiveData<Double> getTotalHarga() {
         return cartDatabase.cartDao().getTotal_Harga();
     }
 

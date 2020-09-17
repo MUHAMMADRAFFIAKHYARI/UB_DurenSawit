@@ -2,6 +2,7 @@ package android.example.ub_durensawit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin_;
     EditText etEmail, etPassword;
     private ApiInterface apiInterface;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,12 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            login();
+                progress=new ProgressDialog(LoginActivity.this);
+                progress.setMessage("Mohon tunggu Sebentar");
+                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progress.setIndeterminate(true);
+                progress.show();
+                login();
 			/**
 			//Kalo mau debugging
                 startActivity(new Intent(LoginActivity.this,
@@ -92,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+               progress.dismiss();
                 if(response.body()!=null){
                    User user = response.body();
                    if(user.isSuccess()){
@@ -109,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                progress.dismiss();
 
             }
         });

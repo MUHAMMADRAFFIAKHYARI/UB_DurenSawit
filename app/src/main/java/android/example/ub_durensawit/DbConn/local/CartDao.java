@@ -40,7 +40,7 @@ public interface CartDao {
         public void deleteCartItem(Cart cart);
 
         @Query("SELECT SUM(harga) as total_harga FROM Cart")
-        public LiveData<BigDecimal> getTotal_Harga();
+        public LiveData<Double> getTotal_Harga();
 
 
 

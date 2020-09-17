@@ -76,7 +76,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             app:fontFamily="@font/poppins_bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintBottom_toTopOf="@+id/totalHarga"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
