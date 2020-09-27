@@ -96,6 +96,7 @@ public class CategoryItemRecyclerAdapter extends RecyclerView.Adapter<CategoryIt
         TextView productName;
         TextView productPrice;
         ProgressBar progressBar;
+        //String productCategory;
         int idProduk;
 
 

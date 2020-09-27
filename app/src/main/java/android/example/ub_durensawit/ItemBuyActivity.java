@@ -41,16 +41,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ItemBuyActivity extends AppCompatActivity {
-    private ApiInterface apiInterface;
-    private ProgressDialog progress;
     TextView quantityItem, prodName, prodCtg, prodPrice, coba, goBuy;
     String productName, productCategory, productPrice;
     int  productQuantity,productId;
     ImageView prodImage;
     int angka = 1;
-    Context context;
-    int position;
-    int [] imageProduct = {R.drawable.product1,R.drawable.product2,R.drawable.product3,R.drawable.product4,R.drawable.product1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +90,7 @@ public class ItemBuyActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        int idProduk  = i.getIntExtra("idProduk", 0);
+        productId  = i.getIntExtra("idProduk", 0);
         productName = i.getStringExtra("namaProduk");
         productPrice = i.getStringExtra("hargaProduk");
 
@@ -115,7 +110,7 @@ public class ItemBuyActivity extends AppCompatActivity {
         circularProgressDrawable.start();
 
         Glide.with(ItemBuyActivity.this)
-                .load("https://budiganteng.000webhostapp.com/product/"+Integer.toString(idProduk)+".png")
+                .load("https://budiganteng.000webhostapp.com/product/"+Integer.toString(productId)+".png")
                 .placeholder(circularProgressDrawable)
                 .listener(new RequestListener<Drawable>() {
                     @Override
@@ -177,7 +172,6 @@ public class ItemBuyActivity extends AppCompatActivity {
 
     private void intoTheCart(){
         CartRepository cartRepository = new CartRepository(getApplicationContext());
-       //Sementara
         String nama= prodName.getText().toString();
         int harga = Integer.parseInt(prodPrice.getText().toString());
         int jumlah = Integer.parseInt(quantityItem.getText().toString());

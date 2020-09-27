@@ -49,6 +49,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.CartVi
         mCarts = carts;
         notifyDataSetChanged();
     }
+    public void clearCarts(){
+        mCarts.clear();
+    }
 
     public List<Cart> getCarts(){
         return mCarts;

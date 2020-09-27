@@ -35,6 +35,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,13 +63,13 @@ import retrofit2.Response;
 public class CartActivity extends AppCompatActivity {
 
     Button addCart, toWarn;
-    private ImageView cartEmptyImage;
+    private CheckBox allChecked;
+    private ImageView cartEmptyImage,clearButton;
     private TextView emptyTitle,emptyDescription,totalHarga;
     CartRepository cartRepository;
     private CartListAdapter cartListAdapter;
     private RecyclerView itemRecycler;
     ConstraintLayout  nextBuy;
-    private List<Cart> allItems;
     ProgressDialog progress;
 
     ApiInterface apiInterface;
@@ -88,6 +89,10 @@ public class CartActivity extends AppCompatActivity {
             }
         });
         cartEmptyImage = findViewById(R.id.imageCartEmpty);
+        clearButton = findViewById(R.id.clearButton);
+
+        allChecked = findViewById(R.id.allChecked);
+
         emptyTitle = findViewById(R.id.empty_title);
         emptyDescription = findViewById(R.id.empty_description);
         itemRecycler =findViewById(R.id.item_recycler);
@@ -105,7 +110,6 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
          **/
-        allItems = new ArrayList<>();
         cartRepository = new CartRepository(this);
         fetchAllItems(0);
 
@@ -120,6 +124,18 @@ public class CartActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(allChecked.isChecked()){
+                    EmptyCart();
+
+                } else{
+                    Toast.makeText(CartActivity.this, "Anda Belum memilih item", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
    private void fetchAllItems(int indicator){
@@ -152,6 +168,7 @@ public class CartActivity extends AppCompatActivity {
                    addCart.setVisibility(View.GONE);
                } else {
                    toWarn.setEnabled(false);
+                   itemRecycler.setVisibility(View.GONE);
                    cartEmptyImage.setVisibility(View.VISIBLE);
                    emptyTitle.setVisibility(View.VISIBLE);
                    emptyDescription.setVisibility(View.VISIBLE);
@@ -167,7 +184,11 @@ public class CartActivity extends AppCompatActivity {
        cartRepository.getTotalHarga().observe(this, new Observer<Double>() {
            @Override
            public void onChanged(Double result) {
-               totalHarga.setText(result.toString());
+               if(result != null) {
+                   totalHarga.setText(result.toString());
+               } else{
+                   totalHarga.setText("0");
+               }
            }
 
        });
@@ -180,9 +201,6 @@ public class CartActivity extends AppCompatActivity {
     }
 
 
-    private void setData(List<Cart> carts){
-        this.allItems = carts;
-    }
 
 
     public void toWarn(View view) {
@@ -212,6 +230,8 @@ public class CartActivity extends AppCompatActivity {
 
     private void EmptyCart(){
         cartRepository.emptyCart();
+        cartListAdapter.clearCarts();
+        totalHarga.setText("0");
     }
 
 }
