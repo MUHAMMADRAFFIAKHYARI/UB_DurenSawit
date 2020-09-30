@@ -1,4 +1,5 @@
 package android.example.ub_durensawit.DbConn;
+import android.example.ub_durensawit.Model.Category;
 import android.example.ub_durensawit.Model.Order;
 import android.example.ub_durensawit.Model.Product;
 import android.example.ub_durensawit.Model.User;
@@ -47,9 +48,15 @@ public interface ApiInterface {
     @GET("getAllProducts.php")
     public Call<List<Product>> getAllProducts();
 
-    
 
-
+//For Category Class
+/**
+    @FormUrlEncoded
+    @GET("getProduct.php")
+    public Call<Category> getCategory(
+            @Query("id") int id
+    );
+            **/
 
     //for user login
     @FormUrlEncoded

@@ -65,7 +65,9 @@ public class Product {
     }
 
     public String getImageUrl(){
-        ImageUrl="https://budiganteng.000webhostapp.com/product/"+Integer.toString(getProduk_id())+".png";
+        //Sementara
+        String format =(getProduk_id() == 1) ? ".png" : ".jpg";
+        ImageUrl = "https://budiganteng.000webhostapp.com/product/"+Integer.toString(getProduk_id()) + format;
         return ImageUrl;
     }
 }
