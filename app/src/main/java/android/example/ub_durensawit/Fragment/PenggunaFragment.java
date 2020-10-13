@@ -4,8 +4,12 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.example.ub_durensawit.AboutActivity;
 import android.example.ub_durensawit.CartActivity;
+import android.example.ub_durensawit.DbConn.ApiClient;
+import android.example.ub_durensawit.DbConn.ApiInterface;
 import android.example.ub_durensawit.HistoryActivity;
 import android.example.ub_durensawit.IntroActivity;
+import android.example.ub_durensawit.LandingActivity;
+import android.example.ub_durensawit.Model.User;
 import android.example.ub_durensawit.ProfileActivity;
 import android.example.ub_durensawit.R;
 import android.example.ub_durensawit.ThanksActivity;
@@ -24,16 +28,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.common.api.Api;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+
 public class PenggunaFragment extends Fragment {
 
     ImageView image_user;
-    TextView nama, email;
     RelativeLayout toLogout, toAbout, toHistory, toProfile;
+    TextView tvNamaUser, tvEmail;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pengguna, container,false);
+
+        LandingActivity landingActivity = (LandingActivity)getActivity();
+        tvNamaUser = view.findViewById(R.id.tv_nama);
+        tvEmail = view.findViewById(R.id.tv_email);
+
+        tvNamaUser.setText(landingActivity.getNama());
+        tvEmail.setText(landingActivity.getEmail());
 
         toLogout = view.findViewById(R.id.toLogOut);
         toLogout.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +104,10 @@ public class PenggunaFragment extends Fragment {
             }
         });
 
+
         return view;
+
+
 
 
 //        IntroActivity activity = (IntroActivity)getActivity();
@@ -108,5 +128,10 @@ public class PenggunaFragment extends Fragment {
 //            email.setText(personEmail);
 //            Glide.with(this).load(personPhoto).into(image_user);
         }
+
+
+
+
+
     }
 

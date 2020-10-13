@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nex3z.notificationbadge.NotificationBadge;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +57,8 @@ public class BerandaFragment extends Fragment {
     List<Product> productList;
     private ApiInterface apiInterface;
 
+    TextView tvNama;
+
     ProgressDialog progress;
 
 
@@ -62,6 +67,12 @@ public class BerandaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container,false);
+
+        //String nama = getArguments().getString("nama");
+        LandingActivity landingActivity = (LandingActivity) getActivity();
+        tvNama = view.findViewById(R.id.tv_namaBeranda);
+        tvNama.setText(landingActivity.getNama());
+
 
         productList = new ArrayList<>();
         fetchAllProducts();
@@ -110,13 +121,6 @@ public class BerandaFragment extends Fragment {
         categoryItemListPromosi.add(new CategoryItem(2, R.drawable.product2));
         categoryItemListPromosi.add(new CategoryItem(2, R.drawable.product1));
     **/
-
-
-
-
-
-
-
 
         return view;
     }

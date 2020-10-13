@@ -21,11 +21,25 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LandingActivity extends AppCompatActivity {
 
+    String nama;
+    String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
+
+        nama = getIntent().getStringExtra("nama");
+        email = getIntent().getStringExtra("email");
         //hilangin actionBar
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
             Window window = getWindow();
@@ -49,9 +63,18 @@ public class LandingActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     Fragment  selectedFragment = null;
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("nama", nama);
+                    bundle.putString("email", email);
+                   // bundle.putString("email", nama.getEmail());
+
+//                    BerandaFragment berandaFragment = new BerandaFragment();
+//                    berandaFragment.setArguments(bundle);
+
                     switch (menuItem.getItemId()){
                         case R.id.navHome:
                             selectedFragment = new BerandaFragment();
+                            selectedFragment.setArguments(bundle);
                             break;
                         case R.id.navCategory:
                             selectedFragment = new KategoriFragment();
@@ -61,6 +84,7 @@ public class LandingActivity extends AppCompatActivity {
                             break;
                         case R.id.navUser:
                             selectedFragment = new PenggunaFragment();
+                            selectedFragment.setArguments(bundle);
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, selectedFragment).commit();

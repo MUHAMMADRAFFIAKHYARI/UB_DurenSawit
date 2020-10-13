@@ -6,11 +6,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.example.ub_durensawit.DbConn.ApiClient;
 import android.example.ub_durensawit.DbConn.ApiInterface;
+import android.example.ub_durensawit.Fragment.BerandaFragment;
 import android.example.ub_durensawit.Model.LoginResponse;
 import android.example.ub_durensawit.Model.User;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
@@ -98,15 +100,21 @@ public class LoginActivity extends AppCompatActivity {
 
         call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<User> call, Response<User>response) {
                progress.dismiss();
                 if(response.body()!=null){
                    User user = response.body();
                    if(user.isSuccess()){
+                       Log.d("NAMA", user.getNama());
+                       Log.d("EMAIL",user.getEmail());
+
                        Toast.makeText(LoginActivity.this, "Selamat Datang di UB DurenSawit",
                                Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(LoginActivity.this,
-                               LandingActivity.class));
+                       Intent intent = new Intent(getBaseContext(),LandingActivity.class);
+                       intent.putExtra("nama",user.getNama());
+                       intent.putExtra("email",user.getEmail());
+                       startActivity(intent);
+
                        finish();
                    } else{
                        Toast.makeText(LoginActivity.this,
