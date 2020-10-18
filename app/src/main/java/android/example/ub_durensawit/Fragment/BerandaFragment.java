@@ -174,7 +174,8 @@ public class BerandaFragment extends Fragment {
                 productList = response.body();
                 if (response.isSuccessful() && response != null) {
                     List<AllCategory> allCategoryList = new ArrayList<>();
-                    allCategoryList.add(new AllCategory("Terbaru", productList));
+                    allCategoryList.add(new AllCategory("Terbaru", productList.subList(0,5)));
+                    allCategoryList.add(new AllCategory("Terlama", productList.subList(5,productList.size())));
                     //allCategoryList.add(new AllCategory("Promosi Minggu Ini", categoryItemListPromosi));
 
                     setMainCategoryRecycler(allCategoryList);

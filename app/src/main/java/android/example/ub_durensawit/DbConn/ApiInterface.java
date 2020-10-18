@@ -39,10 +39,9 @@ public interface ApiInterface {
     );
 
 //For Product Class
-    @FormUrlEncoded
-    @GET("getProduct.php")
-    public Call<Product> getProduct(
-            @Query("id") int id
+    @GET("GetProducts.php")
+    public Call<List<Product>> getProduct(
+            @Query("category_id") int category_id
     );
 
     @GET("getAllProducts.php")
@@ -57,6 +56,11 @@ public interface ApiInterface {
             @Query("id") int id
     );
             **/
+
+
+@GET("getAllCategory.php")
+public Call<List<Category>> getAllCategories();
+
 
     //for user login
     @FormUrlEncoded

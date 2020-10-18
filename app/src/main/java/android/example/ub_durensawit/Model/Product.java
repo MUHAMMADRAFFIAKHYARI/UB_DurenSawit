@@ -30,6 +30,16 @@ public class Product {
     @SerializedName("id_supplier")
     private int id_supplier;
 
+    @SerializedName("nama_kategori")
+    private String nama_kategori;
+
+    public String getNama_kategori() {
+        return nama_kategori;
+    }
+
+
+
+
     private String ImageUrl;
 
     public int getHarga() {
@@ -66,7 +76,7 @@ public class Product {
 
     public String getImageUrl(){
         //Sementara
-        String format =(getProduk_id() == 1) ? ".png" : ".jpg";
+        String format =getProduk_id() <= 5 ? ".png" : ".jpg";
         ImageUrl = "https://budiganteng.000webhostapp.com/product/"+Integer.toString(getProduk_id()) + format;
         return ImageUrl;
     }
