@@ -109,7 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_alignParentBottom="true"
-                        android:background="@color/colorGrey"></View>
+                        android:background="@color/colorGrey" />
 
                 </RelativeLayout>
 
@@ -139,7 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_alignParentBottom="true"
-                        android:background="@color/colorGrey"></View>
+                        android:background="@color/colorGrey" />
 
                 </RelativeLayout>
 

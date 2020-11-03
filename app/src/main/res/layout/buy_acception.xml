@@ -57,7 +57,7 @@
             android:layout_marginRight="30dp"
             android:fontFamily="@font/poppins"
             android:gravity="center_horizontal"
-            android:text="@string/transaction_warn"
+                android:text="@string/transaction_warn"
             android:textAlignment="textStart"
             android:textColor="@color/colorBlackBright"
             android:textSize="16sp"

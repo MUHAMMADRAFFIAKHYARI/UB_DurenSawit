@@ -7,52 +7,214 @@
     android:background="@color/colorGrey"
     tools:context=".ProfileActivity">
 
-    <TextView
-        android:id="@+id/tv_nama3"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Raffi Akhyari"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:fontFamily="@font/poppins_bold"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="270dp"
-        android:layout_height="270dp"
-        android:background="@drawable/circle_user"
-        app:layout_constraintBottom_toBottomOf="@+id/userImage"
-        app:layout_constraintEnd_toEndOf="@+id/userImage"
-        app:layout_constraintStart_toStartOf="@+id/userImage"
-        app:layout_constraintTop_toTopOf="@+id/userImage"></View>
-
-    <ImageView
-        android:id="@+id/backArr2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_backgrey"
-        tools:ignore="VectorDrawableCompat" />
-
-    <ImageView
-        android:id="@+id/userImage"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="64dp"
+        android:scrollbars="none"
+        android:layout_marginBottom="@dimen/padding_screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backArr2"
-        tools:srcCompat="@drawable/raffi">
+        app:layout_constraintTop_toTopOf="parent"
 
+        >
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-    </ImageView>
+            <TextView
+                android:id="@+id/tv_nama3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Raffi Akhyari"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                app:fontFamily="@font/poppins_bold"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_screen"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/tv_nama3">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/padding_screen"
+                    android:paddingLeft="@dimen/padding_screen"
+                    android:paddingRight="@dimen/padding_screen">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="email"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="raffiakhyari@gmail.com"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins_bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorGrey" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/padding_screen"
+                    android:paddingLeft="@dimen/padding_screen"
+                    android:paddingRight="@dimen/padding_screen">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="no hp/telepon"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="08xxxxxxxx"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins_bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorGrey" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/padding_screen"
+                    android:paddingLeft="@dimen/padding_screen"
+                    android:paddingRight="@dimen/padding_screen">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="alamat"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="left"
+                        android:text="Jalan  manggis no 90, Jakarta Timur"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins_bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colorGrey" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/padding_screen"
+                    android:layout_marginBottom="@dimen/padding_screen"
+                    android:paddingLeft="@dimen/padding_screen"
+                    android:paddingRight="@dimen/padding_screen">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Status"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Aktif"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins_bold" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="270dp"
+                android:layout_height="270dp"
+                android:background="@drawable/circle_user"
+                app:layout_constraintBottom_toBottomOf="@+id/userImage"
+                app:layout_constraintEnd_toEndOf="@+id/userImage"
+                app:layout_constraintStart_toStartOf="@+id/userImage"
+                app:layout_constraintTop_toTopOf="@+id/userImage"></View>
+
+            <ImageView
+                android:id="@+id/backArr2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="64dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_backgrey"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/userImage"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="64dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backArr2"
+                tools:srcCompat="@drawable/raffi"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="@dimen/padding_screen"
+                android:text="Ubah Profil"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                app:fontFamily="@font/poppins"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

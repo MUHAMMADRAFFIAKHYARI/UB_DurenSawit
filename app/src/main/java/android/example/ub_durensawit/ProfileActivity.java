@@ -14,12 +14,20 @@ import com.bumptech.glide.Glide;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    ImageView userImage;
+    ImageView userImage, backArr2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        backArr2 = findViewById(R.id.backArr2);
+        backArr2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         userImage = findViewById(R.id.userImage);
         Glide.with(getApplicationContext())
